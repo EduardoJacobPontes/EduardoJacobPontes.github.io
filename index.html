@@ -16,7 +16,7 @@
   /* Preto e branco -- alvinegro. O acento e o proprio branco. */
   --bg:#080808; --bg2:#0E0E0E; --card:#111111; --card2:#161616;
   --line:#242424; --line2:#3A3A3A;
-  --ink:#FFFFFF; --ink2:#A8A8A8; --ink3:#6A6A6A;
+  --ink:#FFFFFF; --ink2:#C2C2C2; --ink3:#8E8E8E;
   --grad:linear-gradient(120deg,#FFFFFF 0%,#D4D4D4 50%,#8F8F8F 100%);
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --disp:"Space Grotesk","Inter",sans-serif;
@@ -65,15 +65,22 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.07)}
 @media(max-width:820px){.menu{display:none}}
 
+/* capa -- a faixa do topo, estilo LinkedIn */
+.cover{position:relative;height:clamp(190px,26vw,310px);margin-top:68px;overflow:hidden;border-bottom:1px solid var(--line)}
+.cover img{width:100%;height:120%;object-fit:cover;display:block;will-change:transform}
+.cover:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;
+  background:linear-gradient(transparent,var(--bg))}
+
 /* hero */
-.hero{min-height:auto;display:flex;align-items:center;padding:150px 0 90px}
+.hero{min-height:auto;display:flex;align-items:center;padding:0 0 90px}
 .hero-grid>*,.feature>*{min-width:0}
 .hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:center}
 .tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;color:var(--ink);
   border:1px solid var(--line2);background:rgba(255,255,255,.04);padding:7px 14px;border-radius:999px}
-.avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin-bottom:20px;
-  border:2px solid var(--line2);box-shadow:0 0 0 6px rgba(255,255,255,.05),0 20px 40px -20px #000;filter:grayscale(1) contrast(1.05);transition:filter .5s}
-.avatar:hover{filter:grayscale(0) contrast(1)}
+.avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;display:block;margin:-74px 0 20px;position:relative;z-index:3;
+  border:4px solid var(--bg);box-shadow:0 0 0 1px var(--line2),0 24px 50px -20px #000;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.avatar:hover{transform:scale(1.06) rotate(-2deg)}
+@media(max-width:620px){.avatar{width:104px;height:104px;margin-top:-58px}}
 .dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 h1{font-family:var(--disp);font-size:clamp(40px,6.2vw,78px);line-height:1.02;letter-spacing:-2.5px;margin:22px 0 18px}
@@ -143,8 +150,13 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
   background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 42%)}
 .p:hover:after{opacity:1}
 .p:hover{border-color:var(--line2);box-shadow:0 24px 60px -30px rgba(255,255,255,.18)}
-.p .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:#fff;font-size:20px;margin-bottom:16px}
+.p .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:#fff;font-size:20px;margin-bottom:16px;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s}
+.p:hover .ic{transform:translateY(-3px) rotate(-8deg) scale(1.08);background:#fff;color:#000}
 .p h4{font-family:var(--disp);font-size:20px;letter-spacing:-.4px}
+.p:hover{transform:translateY(-4px)}
+.p .chip{transition:border-color .25s,color .25s}
+.p:hover .chip{border-color:var(--line2);color:var(--ink)}
 .p .dt{font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-top:5px;display:block}
 .p p{color:var(--ink2);font-size:14.5px;margin:10px 0 16px;flex:1}
 .p .tech{display:flex;flex-wrap:wrap;gap:6px}
@@ -176,9 +188,12 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 .ti h4{font-family:var(--disp);font-size:21px;margin:4px 0}
 .ti p{color:var(--ink2);font-size:15px;max-width:760px}
 .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
-.ce{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);transition:border-color .25s}
-.ce:hover{border-color:var(--line2)}
-.ce .badge{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.07);color:#fff;display:grid;place-items:center;flex:none}
+.ce{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--card);
+  transition:border-color .25s,transform .25s,background .25s}
+.ce:hover{border-color:#fff;transform:translateX(4px);background:var(--card2)}
+.ce .badge{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.07);color:#fff;display:grid;place-items:center;flex:none;
+  transition:background .3s,color .3s,transform .3s}
+.ce:hover .badge{background:#fff;color:#000;transform:rotate(-10deg)}
 .ce .badge svg{width:18px;height:18px}
 .ce b{display:block;font-size:14.5px}.ce span{font-size:12.5px;color:var(--ink3);font-family:var(--mono)}
 @media(max-width:1000px){.certs{grid-template-columns:1fr 1fr}}
@@ -186,8 +201,10 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 
 /* fora do codigo */
 .fora{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
-.fo{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--card)}
-.fo .ic{font-size:22px;margin-bottom:10px;display:block}
+.fo{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--card);transition:border-color .3s,transform .3s}
+.fo:hover{border-color:var(--line2);transform:translateY(-4px)}
+.fo .ic{font-size:26px;margin-bottom:10px;display:block;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.fo:hover .ic{transform:scale(1.25) rotate(8deg)}
 .fo b{font-family:var(--disp);font-size:17px;display:block;margin-bottom:6px}
 .fo p{color:var(--ink2);font-size:14px}
 @media(max-width:800px){.fora{grid-template-columns:1fr}}
@@ -223,13 +240,15 @@ footer .star{color:#fff}
   <a class="btn btn-g mag" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo ↓</a>
 </div></nav>
 
+<div class="cover"><img id="capa" src="img/capa.jpg" alt=""></div>
+
 <header class="hero" id="top"><div class="wrap hero-grid">
   <div>
-    <img class="avatar rv" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes">
+    <img class="avatar" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes">
     <span class="tag"><span class="dot"></span>Disponível para oportunidades · Rio de Janeiro</span>
     <h1><span class="scramble" data-txt="Eduardo">Eduardo</span><br><span class="grad scramble" data-txt="Jacob Pontes">Jacob Pontes</span></h1>
     <div class="typed"><span id="typed"></span><span class="caret"></span></div>
-    <p class="lead">Estudante de Engenharia de Software no Ibmec e estagiário de Tecnologia e Dados na InvestSmart XP. Transformo processo manual em sistema que roda sozinho: um portal interno usado todo dia pela mesa de alocação, pipelines de dados sobre Amazon Redshift e automações que entregam relatórios sem ninguém apertar um botão. Hoje me aprofundo em <b>segurança de software</b> — é onde quero construir minha carreira.</p>
+    <p class="lead">Estudante de Engenharia de Software no Ibmec e estagiário de Tecnologia e Dados na InvestSmart XP. Transformo processo manual em sistema que roda sozinho: um portal interno usado todo dia pela mesa de alocação, pipelines de dados sobre Amazon Redshift e automações que entregam relatórios sem ninguém apertar um botão.</p>
     <div class="ctas">
       <a class="btn btn-p mag" href="#projetos">Ver meus projetos →</a>
       <a class="btn btn-g mag" href="https://github.com/EduardoJacobPontes" target="_blank" rel="noopener">GitHub</a>
@@ -376,7 +395,7 @@ footer .star{color:#fff}
   <div class="sk rv"><b>IA</b><p>Machine Learning, Deep Learning, Visão Computacional, agentes de IA.</p></div>
   <div class="sk rv"><b>Engenharia</b><p>Clean Code, SOLID, Git, Scrum, criptografia de dados.</p></div>
   <div class="sk rv"><b>QA & Qualidade</b><p>Testes automatizados, revisão de código, boas práticas de qualidade.</p></div>
-  <div class="sk rv"><b>Segurança de Software</b><p>Criptografia (Fernet/AES), OAuth2, boas práticas OWASP — já estudo a fundo e é a área em que quero seguir carreira.</p></div>
+  <div class="sk rv"><b>Segurança de Software</b><p>Criptografia (Fernet/AES), OAuth2, gestão de segredos e boas práticas OWASP.</p></div>
 </div></div></section>
 
 <section id="fora" style="padding-top:40px"><div class="wrap">
@@ -384,8 +403,8 @@ footer .star{color:#fff}
     <p>Preto e branco aqui não é só escolha de design.</p></div>
   <div class="fora">
     <div class="fo rv"><span class="ic">★</span><b>Botafogo de coração</b><p>Alvinegro de paixão — a paleta deste site é homenagem, não coincidência. Futebol me ensinou o que disciplina e virada de jogo significam.</p></div>
-    <div class="fo rv"><span class="ic">◈</span><b>Segurança de software</b><p>Estudo por conta própria criptografia, OAuth2 e OWASP. É o assunto que me prende fora do expediente e onde quero seguir carreira.</p></div>
-    <div class="fo rv"><span class="ic">✦</span><b>Curiosidade de origem</b><p>Minha primeira premiação foi na Olimpíada de Astronomia, em 2018. A vontade de entender como as coisas funcionam vem de antes do primeiro código.</p></div>
+    <div class="fo rv"><span class="ic">♪</span><b>Piano</b><p>Toco piano desde cedo. Ler partitura e repetir até sair limpo ensina a mesma coisa que programar: paciência com o detalhe e prática deliberada.</p></div>
+    <div class="fo rv"><span class="ic">◐</span><b>Treino e saúde</b><p>Mantenho uma rotina estruturada de esportes e treinos praticamente todos os dias da semana. Consistência fora do trabalho é o que sustenta o foco dentro dele.</p></div>
   </div>
 </div></section>
 
@@ -430,14 +449,15 @@ footer .star{color:#fff}
            c[0] + '</b><span>' + c[1] + '</span></div></div>';
   }).join("");
 
-  // ---- barra de progresso ----------------------------------------------
-  var prog = document.getElementById("prog");
-  function progresso(){
+  // ---- barra de progresso + parallax da capa ---------------------------
+  var prog = document.getElementById("prog"), capa = document.getElementById("capa");
+  function aoRolar(){
     var h = document.documentElement.scrollHeight - window.innerHeight;
     prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+    if (capa && !reduz) capa.style.transform = "translateY(" + (window.scrollY * -.14) + "px)";
   }
-  window.addEventListener("scroll", progresso, {passive:true});
-  progresso();
+  window.addEventListener("scroll", aoRolar, {passive:true});
+  aoRolar();
 
   // ---- nav --------------------------------------------------------------
   var nav = document.getElementById("nav");
@@ -469,20 +489,23 @@ footer .star{color:#fff}
   var LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#@%&*/\\<>[]{}";
   function embaralhar(el){
     if (reduz) return;
+    // um hover em cima do outro empilhava timers e o texto embaralhava pra
+    // sempre -- cada elemento guarda o seu e cancela antes de recomecar.
+    if (el._tm) clearInterval(el._tm);
     var alvo = el.dataset.txt, passo = 0;
-    var timer = setInterval(function(){
+    el._tm = setInterval(function(){
       el.textContent = alvo.split("").map(function(ch, i){
         if (ch === " ") return " ";
         if (i < passo) return ch;
         return LETRAS[Math.floor(Math.random() * LETRAS.length)];
       }).join("");
       passo += 1 / 2;
-      if (passo >= alvo.length) { clearInterval(timer); el.textContent = alvo; }
+      if (passo >= alvo.length) { clearInterval(el._tm); el._tm = null; el.textContent = alvo; }
     }, 38);
   }
   document.querySelectorAll(".scramble").forEach(function(el, i){
     setTimeout(function(){ embaralhar(el); }, 180 + i * 280);
-    el.addEventListener("pointerenter", function(){ embaralhar(el); });
+    el.addEventListener("pointerenter", function(){ if (!el._tm) embaralhar(el); });
   });
 
   // ---- maquina de escrever ---------------------------------------------
