@@ -84,6 +84,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 h1{font-family:var(--disp);font-size:clamp(40px,6.2vw,78px);line-height:1.02;letter-spacing:-2.5px;margin:22px 0 18px}
+.scramble{display:inline-block;white-space:nowrap}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .typed{font-family:var(--mono);font-size:clamp(15px,1.7vw,19px);color:var(--ink2);min-height:30px}
 .typed b{color:#fff;font-weight:600}
@@ -132,7 +133,22 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .shots img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;border-radius:12px;
   border:1px solid var(--line2);box-shadow:0 30px 70px -35px #000;filter:grayscale(.35);transition:filter .4s,transform .4s}
+.shots img{cursor:zoom-in}
 .shots img:hover{filter:grayscale(0);transform:scale(1.015)}
+
+/* lupa: abre o print em tamanho grande por cima da pagina */
+.lupa{position:fixed;inset:0;z-index:70;display:none;place-items:center;padding:40px 24px;
+  background:rgba(4,4,4,.93);backdrop-filter:blur(8px);opacity:0;transition:opacity .25s}
+.lupa.on{display:grid}
+.lupa.vis{opacity:1}
+.lupa img{max-width:min(1200px,92vw);max-height:86vh;width:auto;border-radius:14px;border:1px solid var(--line2);
+  box-shadow:0 40px 120px -30px #000;transform:scale(.97);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.lupa.vis img{transform:scale(1)}
+.lupa .fechar{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line2);
+  background:rgba(255,255,255,.06);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;
+  transition:background .2s,transform .2s;font-family:var(--sans)}
+.lupa .fechar:hover{background:#fff;color:#000;transform:rotate(90deg)}
+.lupa .dica{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink3)}
 @media(max-width:480px){.shots{grid-template-columns:1fr}}
 @media(max-width:960px){.feature,.hero-grid{grid-template-columns:1fr}}
 
@@ -389,14 +405,18 @@ footer .star{color:#fff}
   <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>Power BI</span><span>Microsoft Graph</span><span>pandas</span><span>Kotlin</span><span>Java</span><span>JavaScript</span><span>React</span><span>Git</span><span>Machine Learning</span>
   <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>Power BI</span><span>Microsoft Graph</span><span>pandas</span><span>Kotlin</span><span>Java</span><span>JavaScript</span><span>React</span><span>Git</span><span>Machine Learning</span>
 </div></div>
-<div class="wrap"><div class="skills">
+<div class="wrap">
+  <div class="sec-h rv" style="margin:56px 0 0"><div><div class="eyebrow">// stack</div><h2>As ferramentas que<br>uso no dia a dia.</h2></div>
+    <p>Do banco de dados ao deploy — o que já usei para colocar sistema de pé e manter rodando.</p></div>
+  <div class="skills">
   <div class="sk rv"><b>Dados & BI</b><p>Amazon Redshift, PostgreSQL, SQLite, pandas, ETL, Power BI.</p></div>
   <div class="sk rv"><b>Backend & Cloud</b><p>Flask, FastAPI, REST APIs, Microsoft Graph, Render.</p></div>
   <div class="sk rv"><b>IA</b><p>Machine Learning, Deep Learning, Visão Computacional, agentes de IA.</p></div>
   <div class="sk rv"><b>Engenharia</b><p>Clean Code, SOLID, Git, Scrum, criptografia de dados.</p></div>
   <div class="sk rv"><b>QA & Qualidade</b><p>Testes automatizados, revisão de código, boas práticas de qualidade.</p></div>
   <div class="sk rv"><b>Segurança de Software</b><p>Criptografia (Fernet/AES), OAuth2, gestão de segredos e boas práticas OWASP.</p></div>
-</div></div></section>
+  </div>
+</div></section>
 
 <section id="fora" style="padding-top:40px"><div class="wrap">
   <div class="sec-h rv"><div><div class="eyebrow">// fora do código</div><h2>Quem está por trás<br>do teclado.</h2></div>
@@ -422,6 +442,12 @@ footer .star{color:#fff}
 </div></div></section>
 </main>
 <footer>© <span id="ano"></span> Eduardo Jacob Pontes <span class="star">★</span></footer>
+
+<div class="lupa" id="lupa">
+  <button class="fechar" id="lupa-fechar" aria-label="Fechar">&times;</button>
+  <img id="lupa-img" src="" alt="">
+  <div class="dica">clique fora, no × ou aperte Esc para voltar</div>
+</div>
 
 <script>
 (function(){
@@ -486,13 +512,18 @@ footer .star{color:#fff}
   });
 
   // ---- texto que se embaralha ------------------------------------------
-  var LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#@%&*/\\<>[]{}";
+  // So letras maiusculas: simbolos como { } / \ tem largura bem diferente e
+  // faziam o titulo pular a cada quadro, o que parecia travamento na tela.
+  var LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   function embaralhar(el){
     if (reduz) return;
-    // um hover em cima do outro empilhava timers e o texto embaralhava pra
-    // sempre -- cada elemento guarda o seu e cancela antes de recomecar.
+    // um hover em cima do outro empilhava timers e o texto nunca se resolvia --
+    // cada elemento guarda o seu e cancela antes de recomecar.
     if (el._tm) clearInterval(el._tm);
     var alvo = el.dataset.txt, passo = 0;
+    // trava a largura no tamanho final: sem isso o bloco todo reflui a cada
+    // troca de letra e empurra o resto da pagina.
+    el.style.minWidth = el.getBoundingClientRect().width + "px";
     el._tm = setInterval(function(){
       el.textContent = alvo.split("").map(function(ch, i){
         if (ch === " ") return " ";
@@ -500,7 +531,10 @@ footer .star{color:#fff}
         return LETRAS[Math.floor(Math.random() * LETRAS.length)];
       }).join("");
       passo += 1 / 2;
-      if (passo >= alvo.length) { clearInterval(el._tm); el._tm = null; el.textContent = alvo; }
+      if (passo >= alvo.length) {
+        clearInterval(el._tm); el._tm = null;
+        el.textContent = alvo; el.style.minWidth = "";
+      }
     }, 38);
   }
   document.querySelectorAll(".scramble").forEach(function(el, i){
@@ -567,6 +601,28 @@ footer .star{color:#fff}
     document.querySelectorAll("#grid .p").forEach(function(c){
       c.classList.toggle("hide", f !== "all" && c.dataset.c.indexOf(f) < 0);
     });
+  });
+
+  // ---- lupa dos prints --------------------------------------------------
+  var lupa = document.getElementById("lupa"), lupaImg = document.getElementById("lupa-img");
+  function abrirLupa(src, alt){
+    lupaImg.src = src; lupaImg.alt = alt || "";
+    lupa.classList.add("on");
+    requestAnimationFrame(function(){ lupa.classList.add("vis"); });
+    document.body.style.overflow = "hidden";
+  }
+  function fecharLupa(){
+    lupa.classList.remove("vis");
+    document.body.style.overflow = "";
+    setTimeout(function(){ lupa.classList.remove("on"); lupaImg.src = ""; }, 250);
+  }
+  document.querySelectorAll(".shots img").forEach(function(img){
+    img.addEventListener("click", function(){ abrirLupa(img.src, img.alt); });
+  });
+  document.getElementById("lupa-fechar").addEventListener("click", fecharLupa);
+  lupa.addEventListener("click", function(e){ if (e.target !== lupaImg) fecharLupa(); });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && lupa.classList.contains("on")) fecharLupa();
   });
 
   // ---- fundo: rede de pontos + estrelas alvinegras ----------------------
