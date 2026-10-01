@@ -275,8 +275,8 @@ footer .star{color:#fff}
      de obrigar a arrastar pro lado pra ler os comentarios */
   /* a box encosta mais nas bordas pra sobrar largura, e com isso a fonte pode
      crescer: a linha mais longa tem 54 caracteres e a mono gasta 0.6em cada */
-  .term{margin-inline:-12px}
-  .term pre{font-size:clamp(8px,calc(2.88vw - 1.2px),13.5px);line-height:2.15;padding:28px 7px;white-space:pre;overflow-x:hidden}
+  .term{margin-inline:-16px}
+  .term pre{font-size:clamp(8px,calc(2.9vw - 0.9px),14.5px);line-height:2.3;padding:32px 5px;white-space:pre;overflow-x:hidden}
   .term-top{padding:14px 16px}
   .m .v{font-size:26px}section{padding:80px 0}.contact{padding:44px 22px}
   /* no celular o resumo vai curto e os botoes repetidos saem: LinkedIn e
@@ -441,7 +441,7 @@ footer .star{color:#fff}
     <div class="ti rv"><div class="d">abr/2026 — atual</div><h4>Estagiário de Tecnologia e Dados · InvestSmart XP</h4>
       <p>Portal Smart Ranking em produção, automações com Microsoft Graph API, SQL e ETL em Amazon Redshift, dashboards em Power BI e estudos analíticos para a diretoria.</p></div>
     <div class="ti rv"><div class="d">previsão de conclusão · dez/2027</div><h4>Bacharelado em Engenharia de Software · Ibmec</h4>
-      <p>Projetos em IA, visão computacional, mobile, web e backend. Inglês avançado e francês básico.</p></div>
+      <p>Projetos em IA, visão computacional, mobile, web e backend. Inglês avançado.</p></div>
   </div>
   <div class="rv" style="margin:18px 0 20px"><div class="eyebrow">// certificações · <b>12</b></div></div>
   <div class="certs" id="certs"></div>
@@ -715,8 +715,15 @@ footer .star{color:#fff}
   // ao filtrar, abre tudo: senao o filtro esconderia cards que ja estao fora
   if (abrirProjetos) document.getElementById("filters").addEventListener("click", abrirProjetos);
 
-  amostra(document.getElementById("certs"), ".ce", 4,
-          document.getElementById("ver-certs"), "certificações");
+  // No celular sobem pro topo as 4 certificacoes mais fortes pra engenharia de
+  // software: linguagem (Java/Oracle), back-end, dados e IA. No computador a
+  // lista fica na ordem original.
+  var certs = document.getElementById("certs");
+  if (estreito) {
+    [0, 4, 5, 8].map(function(i){ return certs.children[i]; })
+      .forEach(function(el, pos){ if (el) certs.insertBefore(el, certs.children[pos]); });
+  }
+  amostra(certs, ".ce", 4, document.getElementById("ver-certs"), "certificações");
 
   // No celular a amostra sao o ranking de Investors e o velocimetro (as duas
   // ultimas): mandamos as duas primeiras pro fim. No computador as quatro
