@@ -67,7 +67,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 /* capa -- a faixa do topo, estilo LinkedIn */
 .cover{position:relative;height:clamp(190px,26vw,310px);margin-top:68px;overflow:hidden;border-bottom:1px solid var(--line)}
+.cover picture{display:block;height:100%}
 .cover img{width:100%;height:120%;object-fit:cover;display:block;will-change:transform}
+@media(max-width:620px){.cover{height:220px}}
 .cover:after{content:"";position:absolute;inset:auto 0 0 0;height:60%;
   background:linear-gradient(transparent,var(--bg))}
 
@@ -181,6 +183,23 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 .p.hide{display:none}
 @media(max-width:960px){.grid{grid-template-columns:1fr 1fr}} @media(max-width:620px){.grid{grid-template-columns:1fr}}
 
+/* celular: 11 cards empilhados viravam uma rolagem sem fim. Mostra 4 e
+   o resto entra no "ver mais". No desktop o botao nem existe. */
+#ver-mais{display:none}
+@media(max-width:620px){
+  #ver-mais{display:inline-flex;margin-top:22px}
+  .grid.encolhido .p.extra{display:none}
+  /* sem mouse nao ha hover: o card no meio da tela acende sozinho */
+  .p.ativo{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(255,255,255,.18)}
+  .p.ativo .ic{transform:translateY(-3px) rotate(-8deg) scale(1.08);background:#fff;color:#000}
+  .p.ativo .chip{border-color:var(--line2);color:var(--ink)}
+  .ce.ativo{border-color:#fff;transform:translateX(4px);background:var(--card2)}
+  .ce.ativo .badge{background:#fff;color:#000;transform:rotate(-10deg)}
+  .fo.ativo{border-color:var(--line2);transform:translateY(-4px)}
+  .fo.ativo .ic{transform:scale(1.25) rotate(8deg)}
+  .sk.ativo{border-color:var(--line2);transform:translateY(-3px)}
+}
+
 /* marquee */
 .marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;
   mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
@@ -256,7 +275,14 @@ footer .star{color:#fff}
   <a class="btn btn-g mag" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo ↓</a>
 </div></nav>
 
-<div class="cover"><img id="capa" src="img/capa.jpg" alt=""></div>
+<div class="cover">
+  <picture>
+    <!-- em tela estreita o 'cover' corta as laterais e comia a estrela:
+         a versao mobile e mais estreita e tem a estrela no meio -->
+    <source media="(max-width:620px)" srcset="img/capa-mobile.jpg">
+    <img id="capa" src="img/capa.jpg" alt="">
+  </picture>
+</div>
 
 <header class="hero" id="top"><div class="wrap hero-grid">
   <div>
@@ -350,6 +376,9 @@ footer .star{color:#fff}
       <p>App Android nativo com várias Activities e navegação por Intents explícitas.</p>
       <div class="tech"><span class="chip">Kotlin</span><span class="chip">Android</span></div>
       <a class="lk" href="https://github.com/EduardoJacobPontes/heroes-dc-" target="_blank" rel="noopener">github →</a></article>
+  </div>
+  <div class="rv" style="text-align:center;margin-top:10px">
+    <button class="btn btn-g" id="ver-mais">Ver mais projetos</button>
   </div>
   <div class="rv" style="text-align:center;margin-top:38px">
     <a class="lk" style="font-size:15px;font-family:var(--mono);color:#fff" href="https://github.com/EduardoJacobPontes?tab=repositories" target="_blank" rel="noopener">ver todos os repositórios no GitHub →</a>
@@ -603,6 +632,46 @@ footer .star{color:#fff}
     });
   });
 
+  // ---- celular: "ver mais projetos" -------------------------------------
+  var grid = document.getElementById("grid"), verMais = document.getElementById("ver-mais");
+  var cards = [].slice.call(grid.querySelectorAll(".p"));
+  cards.forEach(function(c, i){ if (i >= 4) c.classList.add("extra"); });
+  grid.classList.add("encolhido");
+  verMais.textContent = "Ver mais " + (cards.length - 4) + " projetos";
+  verMais.addEventListener("click", function(){
+    grid.classList.remove("encolhido");
+    verMais.style.display = "none";
+  });
+  // ao filtrar, abre tudo: senao o filtro esconderia cards que ja estao fora
+  document.getElementById("filters").addEventListener("click", function(){
+    grid.classList.remove("encolhido");
+    verMais.style.display = "none";
+  });
+
+  // ---- celular: o card no meio da tela acende sozinho --------------------
+  // No toque nao existe :hover, entao a pagina ficava parada ao rolar.
+  var semMouse = window.matchMedia("(hover: none)").matches || window.innerWidth <= 620;
+  if (semMouse && !reduz) {
+    var focaveis = [].slice.call(document.querySelectorAll(".p, .ce, .fo, .sk"));
+    var pendente = false;
+    function focar(){
+      pendente = false;
+      var meio = window.innerHeight / 2, melhor = null, menorD = 1e9;
+      focaveis.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) { el.classList.remove("ativo"); return; }
+        var d = Math.abs(r.top + r.height / 2 - meio);
+        if (d < menorD) { menorD = d; melhor = el; }
+        el.classList.remove("ativo");
+      });
+      if (melhor && menorD < window.innerHeight * .34) melhor.classList.add("ativo");
+    }
+    window.addEventListener("scroll", function(){
+      if (!pendente) { pendente = true; requestAnimationFrame(focar); }
+    }, {passive:true});
+    focar();
+  }
+
   // ---- lupa dos prints --------------------------------------------------
   var lupa = document.getElementById("lupa"), lupaImg = document.getElementById("lupa-img");
   function abrirLupa(src, alt){
@@ -629,7 +698,8 @@ footer .star{color:#fff}
   var cv = document.getElementById("bg"), ctx = cv.getContext("2d"), pts = [], estrelas = [], w, h;
   function dim(){
     w = cv.width = window.innerWidth; h = cv.height = window.innerHeight;
-    var n = Math.min(60, Math.round(w * h / 26000));
+    // no celular a conta dava ~13 pontos e o fundo ficava parado demais
+    var n = Math.max(28, Math.min(60, Math.round(w * h / 26000)));
     pts = []; estrelas = [];
     for (var i = 0; i < n; i++) pts.push({
       x: Math.random()*w, y: Math.random()*h,
