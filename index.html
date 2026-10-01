@@ -64,6 +64,18 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn-g{border:1px solid var(--line2);color:var(--ink);background:rgba(255,255,255,.03)}
 .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.07)}
 @media(max-width:820px){.menu{display:none}}
+/* contato no topo -- vale no computador e no celular */
+.nav-dir{display:flex;align-items:center;gap:8px}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink2);
+  border:1px solid var(--line2);background:rgba(255,255,255,.03);transition:background .2s,color .2s,transform .2s}
+.ico svg{width:18px;height:18px}
+.ico:hover{background:#fff;color:#000;transform:translateY(-2px)}
+@media(max-width:620px){
+  .nav-dir{gap:6px}
+  .ico{width:34px;height:34px;border-radius:10px}.ico svg{width:16px;height:16px}
+  .nav-dir .cv{padding:9px 12px;font-size:12.5px}
+  .logo span{display:none}
+}
 
 /* capa -- a faixa do topo, estilo LinkedIn */
 .cover{position:relative;height:clamp(190px,26vw,310px);margin-top:68px;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -79,7 +91,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:center}
 .tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;color:var(--ink);
   border:1px solid var(--line2);background:rgba(255,255,255,.04);padding:7px 14px;border-radius:999px}
-.avatar{width:132px;height:132px;border-radius:50%;object-fit:cover;display:block;margin:-74px 0 20px;position:relative;z-index:3;
+.avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block;margin:-86px 0 20px;position:relative;z-index:3;
   border:4px solid var(--bg);box-shadow:0 0 0 1px var(--line2),0 24px 50px -20px #000;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .avatar:hover{transform:scale(1.06) rotate(-2deg)}
 @media(max-width:620px){.avatar{width:104px;height:104px;margin-top:-58px}}
@@ -183,12 +195,14 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 .p.hide{display:none}
 @media(max-width:960px){.grid{grid-template-columns:1fr 1fr}} @media(max-width:620px){.grid{grid-template-columns:1fr}}
 
-/* celular: 11 cards empilhados viravam uma rolagem sem fim. Mostra 4 e
-   o resto entra no "ver mais". No desktop o botao nem existe. */
-#ver-mais{display:none}
+/* celular: listas longas viravam uma rolagem sem fim. Mostra uma amostra e
+   o resto entra num "ver mais". No desktop esses botoes nem existem. */
+.abrir-mais{display:none}
 @media(max-width:620px){
-  #ver-mais{display:inline-flex;margin-top:22px}
-  .grid.encolhido .p.extra{display:none}
+  .abrir-mais{display:inline-flex;margin-top:20px}
+  .grid.encolhido .p.extra,
+  .certs.encolhido .ce.extra,
+  .shots.encolhido img.extra{display:none}
   /* sem mouse nao ha hover: o card no meio da tela acende sozinho */
   .p.ativo{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(255,255,255,.18)}
   .p.ativo .ic{transform:translateY(-3px) rotate(-8deg) scale(1.08);background:#fff;color:#000}
@@ -252,8 +266,20 @@ h2{font-family:var(--disp);font-size:clamp(30px,4vw,48px);letter-spacing:-1.4px;
 footer{padding:40px 0;color:var(--ink3);font-size:13px;text-align:center;font-family:var(--mono)}
 footer .star{color:#fff}
 
-@media(max-width:620px){.term pre{font-size:12.5px;line-height:1.8;padding:24px 20px;white-space:pre;overflow-x:auto}
-  .m .v{font-size:26px}section{padding:80px 0}.contact{padding:44px 22px}}
+@media(max-width:620px){
+  /* o codigo inteiro tem de caber na tela: a fonte acompanha a largura em vez
+     de obrigar a arrastar pro lado pra ler os comentarios */
+  /* a fonte segue a largura da tela: a linha mais longa tem 54 caracteres e a
+     fonte mono gasta 0.6em por caractere, entao cabe de 360px pra cima */
+  .term pre{font-size:clamp(8px,calc(2.9vw - 2.4px),12px);line-height:1.95;padding:22px 10px;white-space:pre;overflow-x:hidden}
+  .term-top{padding:14px 16px}
+  .m .v{font-size:26px}section{padding:80px 0}.contact{padding:44px 22px}
+  /* cards de projeto um pouco mais enxutos */
+  .p{padding:19px}
+  .p h4{font-size:18px}
+  .p p{font-size:13.5px;margin:8px 0 14px}
+  .p .ic{width:38px;height:38px;font-size:17px;margin-bottom:12px}
+}
 /* reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -267,12 +293,23 @@ footer .star{color:#fff}
 <div class="grain"></div>
 
 <nav id="nav"><div class="wrap">
-  <a href="#top" class="logo"><i>★</i>eduardo.pontes</a>
+  <a href="#top" class="logo"><i>★</i><span>eduardo.pontes</span></a>
   <div class="menu">
     <a href="#projetos">Projetos</a><a href="#trajetoria">Trajetória</a><a href="#impacto">Impacto</a>
     <a href="#smart-ranking">Smart Ranking</a><a href="#stack">Stack</a><a href="#contato">Contato</a>
   </div>
-  <a class="btn btn-g mag" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo ↓</a>
+  <div class="nav-dir">
+    <a class="ico" href="https://www.linkedin.com/in/eduardo-jacob-pontes-574b0b2b5" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+    </a>
+    <a class="ico" href="mailto:dudujpontes@gmail.com" aria-label="E-mail" title="dudujpontes@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+    </a>
+    <a class="ico" href="https://wa.me/5521990200770" target="_blank" rel="noopener" aria-label="WhatsApp" title="(21) 99020-0770">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    </a>
+    <a class="btn btn-g mag cv" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo ↓</a>
+  </div>
 </div></nav>
 
 <div class="cover">
@@ -378,7 +415,7 @@ footer .star{color:#fff}
       <a class="lk" href="https://github.com/EduardoJacobPontes/heroes-dc-" target="_blank" rel="noopener">github →</a></article>
   </div>
   <div class="rv" style="text-align:center;margin-top:10px">
-    <button class="btn btn-g" id="ver-mais">Ver mais projetos</button>
+    <button class="btn btn-g abrir-mais" id="ver-mais">Ver mais projetos</button>
   </div>
   <div class="rv" style="text-align:center;margin-top:38px">
     <a class="lk" style="font-size:15px;font-family:var(--mono);color:#fff" href="https://github.com/EduardoJacobPontes?tab=repositories" target="_blank" rel="noopener">ver todos os repositórios no GitHub →</a>
@@ -395,6 +432,9 @@ footer .star{color:#fff}
   </div>
   <div class="rv" style="margin:18px 0 20px"><div class="eyebrow">// certificações · <b>12</b></div></div>
   <div class="certs" id="certs"></div>
+  <div class="rv" style="text-align:center">
+    <button class="btn btn-g abrir-mais" id="ver-certs">Ver mais certificações</button>
+  </div>
 </div></section>
 
 <section id="impacto"><div class="wrap">
@@ -427,6 +467,9 @@ footer .star{color:#fff}
       <img src="img/smart-ranking-investors.jpg" alt="Ranking de Investors no Smart Ranking (dados fictícios)">
       <img src="img/smart-ranking-velocimetro.jpg" alt="Velocímetro de receita do Smart Ranking (dados fictícios)">
     </div>
+  </div>
+  <div class="rv" style="text-align:center">
+    <button class="btn btn-g abrir-mais" id="ver-prints">Ver mais imagens</button>
   </div>
 </div></section>
 
@@ -632,21 +675,37 @@ footer .star{color:#fff}
     });
   });
 
-  // ---- celular: "ver mais projetos" -------------------------------------
-  var grid = document.getElementById("grid"), verMais = document.getElementById("ver-mais");
-  var cards = [].slice.call(grid.querySelectorAll(".p"));
-  cards.forEach(function(c, i){ if (i >= 4) c.classList.add("extra"); });
-  grid.classList.add("encolhido");
-  verMais.textContent = "Ver mais " + (cards.length - 4) + " projetos";
-  verMais.addEventListener("click", function(){
-    grid.classList.remove("encolhido");
-    verMais.style.display = "none";
-  });
+  // ---- celular: amostra + "ver mais" ------------------------------------
+  // So vale no celular: no computador o CSS esconde o botao e nada e cortado.
+  function amostra(caixa, seletor, quantos, botao, rotulo){
+    var itens = [].slice.call(caixa.querySelectorAll(seletor));
+    var sobram = itens.length - quantos;
+    if (sobram <= 0) { botao.style.display = "none"; return null; }
+    itens.forEach(function(it, i){ if (i >= quantos) it.classList.add("extra"); });
+    caixa.classList.add("encolhido");
+    botao.textContent = "Ver mais " + sobram + " " + rotulo;
+    function abrir(){ caixa.classList.remove("encolhido"); botao.style.display = "none"; }
+    botao.addEventListener("click", abrir);
+    return abrir;
+  }
+
+  var estreito = window.innerWidth <= 620;
+  var grid = document.getElementById("grid");
+  // So no celular: "Teste e Qualidade" sai da amostra e vai pro fim, porque o
+  // Detector de Capacetes chama mais atencao numa primeira olhada. No
+  // computador a ordem dos cards fica exatamente como esta no HTML.
+  if (estreito) {
+    var fora = grid.querySelectorAll(".p")[2];
+    if (fora) grid.appendChild(fora);
+  }
+  var abrirProjetos = amostra(grid, ".p", 3, document.getElementById("ver-mais"), "projetos");
   // ao filtrar, abre tudo: senao o filtro esconderia cards que ja estao fora
-  document.getElementById("filters").addEventListener("click", function(){
-    grid.classList.remove("encolhido");
-    verMais.style.display = "none";
-  });
+  if (abrirProjetos) document.getElementById("filters").addEventListener("click", abrirProjetos);
+
+  amostra(document.getElementById("certs"), ".ce", 4,
+          document.getElementById("ver-certs"), "certificações");
+  amostra(document.querySelector(".shots"), "img", 2,
+          document.getElementById("ver-prints"), "imagens");
 
   // ---- celular: o card no meio da tela acende sozinho --------------------
   // No toque nao existe :hover, entao a pagina ficava parada ao rolar.
