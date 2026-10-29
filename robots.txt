@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eduardojacobpontes.github.io/sitemap.xml

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Ilustração com dados fictícios: no WhatsApp o gestor cria a reunião, informa o próprio nome e os integrantes e recebe um PowerPoint com os números do time e um slide de foco por integrante">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+    <clipPath id="tela"><rect x="166" y="86" width="388" height="828" rx="40"/></clipPath>
+    <filter id="sombra" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".7"/></filter>
+    <marker id="ponta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8e8e8e"/></marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+
+  <!-- celular com a conversa -->
+  <g font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">
+    <rect x="150" y="70" width="420" height="860" rx="54" fill="#111" stroke="#5a5a5a" stroke-width="3"/>
+    <g clip-path="url(#tela)">
+      <rect x="166" y="86" width="388" height="828" fill="#0d0d0d"/>
+      <rect x="166" y="86" width="388" height="92" fill="#171717"/>
+      <rect x="166" y="177" width="388" height="1" fill="#2a2a2a"/>
+    </g>
+    <circle cx="216" cy="132" r="24" fill="#2a2a2a"/>
+    <g transform="translate(203 118)" fill="none" stroke="#f5f5f5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="9" width="22" height="16" rx="4"/><path d="M13 9V4M9 16v2M17 16v2"/><circle cx="13" cy="3" r="1.4" fill="#f5f5f5"/>
+    </g>
+    <text x="254" y="128" font-size="21" font-weight="600" fill="#f5f5f5">Assistente de reuniões</text>
+    <circle cx="259" cy="149" r="5" fill="#25D366"/>
+    <text x="270" y="155" font-size="16" fill="#a3a3a3">online</text>
+
+    <!-- baloes: gestor a direita, robo a esquerda -->
+    <g font-size="19">
+      <rect x="318" y="204" width="214" height="46" rx="14" fill="#25D366"/><text x="336" y="234" fill="#062e16">1 - Criar reunião</text>
+      <rect x="188" y="266" width="138" height="46" rx="14" fill="#1c1c1c" stroke="#2a2a2a"/><text x="206" y="296" fill="#e5e5e5">Seu nome?</text>
+      <rect x="356" y="328" width="176" height="46" rx="14" fill="#25D366"/><text x="374" y="358" fill="#062e16">Ana (fictício)</text>
+      <rect x="188" y="390" width="150" height="46" rx="14" fill="#1c1c1c" stroke="#2a2a2a"/><text x="206" y="420" fill="#e5e5e5">Integrantes?</text>
+      <rect x="306" y="452" width="226" height="46" rx="14" fill="#25D366"/><text x="324" y="482" fill="#062e16">Bruno, Carla, Diego</text>
+      <rect x="188" y="514" width="134" height="46" rx="14" fill="#1c1c1c" stroke="#2a2a2a"/><text x="206" y="544" fill="#e5e5e5">Confirma?</text>
+      <rect x="462" y="576" width="70" height="46" rx="14" fill="#25D366"/><text x="480" y="606" fill="#062e16">OK</text>
+    </g>
+    <!-- documento entregue -->
+    <rect x="188" y="640" width="344" height="108" rx="16" fill="#1c1c1c" stroke="#2a2a2a"/>
+    <rect x="204" y="656" width="56" height="70" rx="6" fill="#EA580C"/>
+    <path d="M244 656v14h16" fill="none" stroke="#FDBA74" stroke-width="2"/>
+    <text x="232" y="712" font-family="JetBrains Mono, Consolas, monospace" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">PPT</text>
+    <text x="274" y="684" font-size="16.5" font-weight="600" fill="#f5f5f5">Reuniao_Time_Exemplo.pptx</text>
+    <text x="274" y="710" font-size="15" fill="#a3a3a3">8 slides · PowerPoint</text>
+    <text x="512" y="738" font-size="12" fill="#6b6b6b" text-anchor="end">agora</text>
+
+    <!-- barra de digitar -->
+    <rect x="182" y="852" width="296" height="48" rx="24" fill="#1a1a1a" stroke="#2a2a2a"/>
+    <text x="206" y="882" font-size="17" fill="#6b6b6b">Mensagem</text>
+    <circle cx="510" cy="876" r="24" fill="#25D366"/>
+    <path d="M500 865l22 11-22 11 4-11z" fill="#fff"/>
+  </g>
+
+  <!-- seta: do documento para os slides -->
+  <path d="M548 694C640 694 640 420 680 300" fill="none" stroke="#8e8e8e" stroke-width="2.5" stroke-dasharray="8 8" marker-end="url(#ponta)"/>
+
+  <!-- slides em leque (sem valores) -->
+  <g font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">
+    <!-- 1: o time em oito numeros -->
+    <g transform="translate(690 130) rotate(-3)" filter="url(#sombra)">
+      <rect width="480" height="270" rx="10" fill="#fafaf8"/>
+      <text x="24" y="34" font-family="JetBrains Mono, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#6b6b6b">REUNIÃO DO TIME · EXEMPLO</text>
+      <text x="24" y="66" font-size="25" font-weight="700" fill="#0a0a0a">O time em oito números</text>
+      <g fill="#efefed">
+        <rect x="24" y="90" width="101" height="72" rx="8"/><rect x="133" y="90" width="101" height="72" rx="8"/><rect x="242" y="90" width="101" height="72" rx="8"/><rect x="351" y="90" width="101" height="72" rx="8"/>
+        <rect x="24" y="172" width="101" height="72" rx="8"/><rect x="133" y="172" width="101" height="72" rx="8"/><rect x="242" y="172" width="101" height="72" rx="8"/><rect x="351" y="172" width="101" height="72" rx="8"/>
+      </g>
+      <g fill="#bdbdbd">
+        <rect x="36" y="104" width="54" height="8" rx="4"/><rect x="145" y="104" width="64" height="8" rx="4"/><rect x="254" y="104" width="48" height="8" rx="4"/><rect x="363" y="104" width="60" height="8" rx="4"/>
+        <rect x="36" y="186" width="60" height="8" rx="4"/><rect x="145" y="186" width="50" height="8" rx="4"/><rect x="254" y="186" width="66" height="8" rx="4"/><rect x="363" y="186" width="52" height="8" rx="4"/>
+      </g>
+      <g fill="#7C3AED">
+        <rect x="36" y="124" width="66" height="22" rx="5"/><rect x="145" y="124" width="54" height="22" rx="5"/><rect x="254" y="124" width="72" height="22" rx="5"/><rect x="363" y="124" width="58" height="22" rx="5"/>
+        <rect x="36" y="206" width="50" height="22" rx="5"/><rect x="145" y="206" width="70" height="22" rx="5"/><rect x="254" y="206" width="56" height="22" rx="5"/><rect x="363" y="206" width="64" height="22" rx="5"/>
+      </g>
+    </g>
+    <!-- 2: comparacao entre integrantes -->
+    <g transform="translate(870 345) rotate(2)" filter="url(#sombra)">
+      <rect width="480" height="270" rx="10" fill="#fafaf8"/>
+      <text x="24" y="34" font-family="JetBrains Mono, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#6b6b6b">REUNIÃO DO TIME · EXEMPLO</text>
+      <text x="24" y="66" font-size="25" font-weight="700" fill="#0a0a0a">Comparação do time</text>
+      <g font-size="15" fill="#525252">
+        <text x="24" y="113">Ana</text><text x="24" y="153">Bruno</text><text x="24" y="193">Carla</text><text x="24" y="233">Diego</text>
+      </g>
+      <g>
+        <rect x="90" y="98" width="330" height="20" rx="4" fill="#7C3AED"/>
+        <rect x="90" y="138" width="250" height="20" rx="4" fill="#A78BFA"/>
+        <rect x="90" y="178" width="290" height="20" rx="4" fill="#8B5CF6"/>
+        <rect x="90" y="218" width="190" height="20" rx="4" fill="#C4B5FD"/>
+      </g>
+    </g>
+    <!-- 3: foco por pessoa -->
+    <g transform="translate(1050 565) rotate(-1.5)" filter="url(#sombra)">
+      <rect width="480" height="270" rx="10" fill="#fafaf8"/>
+      <text x="24" y="34" font-family="JetBrains Mono, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#6b6b6b">REUNIÃO DO TIME · EXEMPLO</text>
+      <text x="24" y="66" font-size="25" font-weight="700" fill="#0a0a0a">Foco: Bruno</text>
+      <circle cx="58" cy="132" r="32" fill="#EDE9FE"/>
+      <circle cx="58" cy="122" r="11" fill="#8B5CF6"/><path d="M38 152a20 18 0 0 1 40 0z" fill="#8B5CF6"/>
+      <g fill="#bdbdbd"><rect x="24" y="186" width="190" height="10" rx="5"/><rect x="24" y="206" width="160" height="10" rx="5"/><rect x="24" y="226" width="175" height="10" rx="5"/></g>
+      <rect x="250" y="92" width="206" height="150" rx="8" fill="#efefed"/>
+      <path d="M266 216L300 196L334 204L368 160L402 172L438 122" fill="none" stroke="#7C3AED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="438" cy="122" r="6" fill="#7C3AED"/>
+    </g>
+  </g>
+
+  <!-- selo -->
+  <rect x="1270" y="40" width="290" height="40" rx="8" fill="#111" stroke="#3a3a3a"/>
+  <text x="1415" y="66" font-family="JetBrains Mono, Consolas, monospace" font-size="15" fill="#c2c2c2" text-anchor="middle">ilustração · dados fictícios</text>
+  <text x="1110" y="930" font-family="JetBrains Mono, Consolas, monospace" font-size="19" fill="#8e8e8e" text-anchor="middle">WhatsApp, cadastro e Data Warehouse viram o PowerPoint do time</text>
+</svg>

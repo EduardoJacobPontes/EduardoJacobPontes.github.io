@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Refatoração em Java aplicando Clean Code: antes e depois">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <g font-family="JetBrains Mono, Consolas, monospace" font-size="24">
+    <!-- antes -->
+    <rect x="130" y="170" width="620" height="640" rx="18" fill="#0f0f0f" stroke="#EF4444" stroke-opacity=".7" stroke-width="2"/><rect x="130" y="250" width="6" height="440" rx="3" fill="#EF4444"/>
+    <text x="170" y="230" fill="#F87171" font-size="20" letter-spacing="3">ANTES</text>
+    <g fill="#8e8e8e">
+      <rect x="162" y="275" width="140" height="36" rx="8" fill="#1c1c1c" stroke="#3a3a3a"/><text x="178" y="300" fill="#a3a3a3" font-size="19">Item.java</text>
+      <text x="170" y="345"><tspan fill="#C084FC">double</tspan> x() {</text>
+      <text x="200" y="385"><tspan fill="#C084FC">return</tspan> preco * qtd;</text>
+      <text x="170" y="425">}</text>
+      <rect x="162" y="475" width="172" height="36" rx="8" fill="#1c1c1c" stroke="#3a3a3a"/><text x="178" y="500" fill="#a3a3a3" font-size="19">Cliente.java</text>
+      <text x="170" y="545"><tspan fill="#C084FC">if</tspan> (tipo == 1) ...</text>
+      <text x="170" y="585"><tspan fill="#C084FC">else if</tspan> (tipo == 2) ...</text>
+      <text x="170" y="625"><tspan fill="#C084FC">else if</tspan> (tipo == 3) ...</text>
+      <text x="170" y="665"><tspan fill="#C084FC">else</tspan> ...</text>
+    </g>
+    <path d="M150 335H730" stroke="#5a5a5a" stroke-width="2" opacity=".0"/>
+    <!-- seta -->
+    <path d="M770 490H830" stroke="#fff" stroke-width="3"/>
+    <path d="M840 490l-18-11v22z" fill="#fff"/>
+    <!-- depois -->
+    <rect x="850" y="170" width="620" height="640" rx="18" fill="#141414" stroke="#22C55E" stroke-width="2"/><rect x="850" y="250" width="6" height="500" rx="3" fill="#22C55E"/>
+    <text x="890" y="230" fill="#4ADE80" font-size="20" letter-spacing="3">DEPOIS</text>
+    <g fill="#fff">
+      <rect x="882" y="275" width="140" height="36" rx="8" fill="#1c1c1c" stroke="#3a3a3a"/><text x="898" y="300" fill="#a3a3a3" font-size="19">Item.java</text>
+      <text x="890" y="345"><tspan fill="#C084FC">double</tspan> subTotal() {</text>
+      <text x="920" y="385"><tspan fill="#C084FC">return</tspan> preco * qtd;</text>
+      <text x="890" y="425">}</text>
+      <rect x="882" y="475" width="172" height="36" rx="8" fill="#1c1c1c" stroke="#3a3a3a"/><text x="898" y="500" fill="#a3a3a3" font-size="19">Cliente.java</text>
+      <text x="890" y="545"><tspan fill="#C084FC">switch</tspan> (tipo) {</text>
+      <text x="920" y="585"><tspan fill="#C084FC">case</tspan> 1: <tspan fill="#C084FC">return</tspan> <tspan fill="#4ADE80">"comum"</tspan>;</text>
+      <text x="920" y="625"><tspan fill="#C084FC">case</tspan> 2: <tspan fill="#C084FC">return</tspan> <tspan fill="#4ADE80">"premium"</tspan>;</text>
+      <text x="920" y="665"><tspan fill="#C084FC">case</tspan> 3: <tspan fill="#C084FC">return</tspan> <tspan fill="#4ADE80">"vip"</tspan>;</text>
+      <text x="920" y="705"><tspan fill="#C084FC">default</tspan>: <tspan fill="#C084FC">return</tspan> <tspan fill="#4ADE80">"outro"</tspan>;</text>
+      <text x="890" y="745">}</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Ilustração com dados fictícios: tabela de clientes com a participação de cada emissor na custódia, limite de 10% destacado e avisos para assessor e Investor">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+    <marker id="ponta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8e8e8e"/></marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <text x="120" y="72" font-family="JetBrains Mono, Consolas, monospace" font-size="18" fill="#8e8e8e">compliance · limite de 10% por emissor</text>
+
+  <g font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">
+    <rect x="120" y="110" width="900" height="790" rx="18" fill="#111" stroke="#3a3a3a" stroke-width="2"/>
+    <g font-family="JetBrains Mono, Consolas, monospace" font-size="14" letter-spacing="1.5" fill="#8e8e8e">
+      <text x="156" y="166">CLIENTE</text><text x="400" y="166">EMISSOR</text><text x="580" y="166">% DA CUSTÓDIA</text><text x="984" y="166" text-anchor="end">STATUS</text>
+    </g>
+    <rect x="120" y="190" width="900" height="1" fill="#262626"/>
+    <!-- marca dos 10% na coluna de barras: x 580 + 10/16*240 = 730 -->
+    <path d="M730 196V860" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="730" y="884" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#FBBF24" text-anchor="middle">limite 10%</text>
+
+    <g font-size="20" fill="#e5e5e5">
+      <text x="156" y="250">Cliente A</text><text x="400" y="250">Emissor X</text>
+      <text x="156" y="360">Cliente B</text><text x="400" y="360">Emissor Y</text>
+      <text x="156" y="470">Cliente C</text><text x="400" y="470">Emissor X</text>
+      <text x="156" y="580">Cliente D</text><text x="400" y="580">Emissor Z</text>
+      <text x="156" y="690">Cliente E</text><text x="400" y="690">Emissor Y</text>
+      <text x="156" y="800">Cliente F</text><text x="400" y="800">Emissor Z</text>
+    </g>
+    <g fill="#262626"><rect x="120" y="300" width="900" height="1"/><rect x="120" y="410" width="900" height="1"/><rect x="120" y="520" width="900" height="1"/><rect x="120" y="630" width="900" height="1"/><rect x="120" y="740" width="900" height="1"/></g>
+    <!-- barras: 240 px = 16% -->
+    <g>
+      <rect x="580" y="236" width="72" height="18" rx="4" fill="#22C55E"/>
+      <rect x="580" y="346" width="189" height="18" rx="4" fill="#EF4444"/>
+      <rect x="580" y="456" width="106" height="18" rx="4" fill="#22C55E"/>
+      <rect x="580" y="566" width="163" height="18" rx="4" fill="#EF4444"/>
+      <rect x="580" y="676" width="35" height="18" rx="4" fill="#22C55E"/>
+      <rect x="580" y="786" width="141" height="18" rx="4" fill="#22C55E"/>
+    </g>
+    <g font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#8e8e8e">
+      <text x="580" y="280">4,8%</text><text x="580" y="390">12,6%</text><text x="580" y="500">7,1%</text><text x="580" y="610">10,9%</text><text x="580" y="720">2,3%</text><text x="580" y="830">9,4%</text>
+    </g>
+    <g font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" text-anchor="middle">
+      <rect x="914" y="230" width="70" height="30" rx="15" fill="none" stroke="#22C55E"/><text x="949" y="250" fill="#4ADE80">ok</text>
+      <rect x="864" y="340" width="120" height="30" rx="15" fill="#EF4444"/><text x="924" y="360" fill="#ffffff">acima</text>
+      <rect x="914" y="450" width="70" height="30" rx="15" fill="none" stroke="#22C55E"/><text x="949" y="470" fill="#4ADE80">ok</text>
+      <rect x="864" y="560" width="120" height="30" rx="15" fill="#EF4444"/><text x="924" y="580" fill="#ffffff">acima</text>
+      <rect x="914" y="670" width="70" height="30" rx="15" fill="none" stroke="#22C55E"/><text x="949" y="690" fill="#4ADE80">ok</text>
+      <rect x="914" y="780" width="70" height="30" rx="15" fill="none" stroke="#22C55E"/><text x="949" y="800" fill="#4ADE80">ok</text>
+    </g>
+
+    <!-- avisos por papel -->
+    <path d="M1026 470C1050 470 1050 330 1072 330" fill="none" stroke="#8e8e8e" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#ponta)"/>
+    <path d="M1026 470C1050 470 1050 640 1072 640" fill="none" stroke="#8e8e8e" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#ponta)"/>
+    <g>
+      <rect x="1080" y="200" width="400" height="250" rx="16" fill="#fafaf8"/>
+      <text x="1110" y="244" font-family="JetBrains Mono, Consolas, monospace" font-size="14" letter-spacing="1.5" fill="#6b6b6b">PARA: ASSESSOR</text>
+      <text x="1110" y="290" font-size="25" font-weight="700" fill="#0a0a0a">Clientes acima de 10%</text>
+      <text x="1110" y="322" font-size="18" fill="#525252">na sua carteira, por emissor</text>
+      <rect x="1110" y="350" width="340" height="1" fill="#e5e5e5"/>
+      <rect x="1110" y="372" width="180" height="10" rx="5" fill="#bdbdbd"/><rect x="1110" y="398" width="130" height="10" rx="5" fill="#bdbdbd"/>
+      <rect x="1370" y="380" width="80" height="34" rx="9" fill="#0a0a0a"/>
+
+      <rect x="1080" y="510" width="400" height="250" rx="16" fill="#fafaf8"/>
+      <text x="1110" y="554" font-family="JetBrains Mono, Consolas, monospace" font-size="14" letter-spacing="1.5" fill="#6b6b6b">PARA: INVESTOR</text>
+      <text x="1110" y="600" font-size="25" font-weight="700" fill="#0a0a0a">Recorte da sua equipe</text>
+      <text x="1110" y="632" font-size="18" fill="#525252">assessores com clientes acima</text>
+      <rect x="1110" y="660" width="340" height="1" fill="#e5e5e5"/>
+      <rect x="1110" y="682" width="200" height="10" rx="5" fill="#bdbdbd"/><rect x="1110" y="708" width="150" height="10" rx="5" fill="#bdbdbd"/>
+      <rect x="1370" y="690" width="80" height="34" rx="9" fill="#0a0a0a"/>
+    </g>
+  </g>
+
+  <rect x="1190" y="40" width="290" height="40" rx="8" fill="#111" stroke="#3a3a3a"/>
+  <text x="1335" y="66" font-family="JetBrains Mono, Consolas, monospace" font-size="15" fill="#c2c2c2" text-anchor="middle">ilustrativo · dados fictícios</text>
+</svg>

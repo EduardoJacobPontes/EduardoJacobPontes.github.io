@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Travel Planner AI: ilustração de roteiro de viagem gerado com IA">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+    <g id="pin"><path d="M0 0c-26 0-46 20-46 46 0 34 46 80 46 80s46-46 46-80C46 20 26 0 0 0z" fill="#F43F5E"/><circle cx="0" cy="46" r="15" fill="#ffffff"/></g>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <!-- meridianos -->
+  <g fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="2">
+    <ellipse cx="800" cy="520" rx="640" ry="330"/>
+    <ellipse cx="800" cy="520" rx="420" ry="330"/>
+    <ellipse cx="800" cy="520" rx="190" ry="330"/>
+    <path d="M160 520H1440M210 380H1390M210 660H1390"/>
+  </g>
+  <!-- rota -->
+  <path d="M300 690C460 420 620 380 790 470S1120 520 1290 300" fill="none" stroke="#06B6D4" stroke-width="5" stroke-dasharray="4 16" stroke-linecap="round"/>
+  <use href="#pin" transform="translate(300 564)"/>
+  <use href="#pin" transform="translate(790 344)"/>
+  <use href="#pin" transform="translate(1290 174)"/>
+  <!-- aviao -->
+  <g transform="translate(1040 470) rotate(-28)" fill="#fff">
+    <path d="M-70 0c0-8 6-12 14-12H40l40-44h22L80-12h30l14-18h14l-8 30 8 30h-14l-14-18H80l22 56H80L40 12H-56c-8 0-14-4-14-12z"/>
+  </g>
+  <!-- balao de IA -->
+  <g transform="translate(180 150)">
+    <rect width="420" height="150" rx="22" fill="#111" stroke="#3a3a3a" stroke-width="2"/>
+    <path d="M70 150l-10 40 44-40z" fill="#111" stroke="#3a3a3a" stroke-width="2"/>
+    <path d="M60 150h50" stroke="#111" stroke-width="4"/>
+    <path d="M60 52l7 18 18 7-18 7-7 18-7-18-18-7 18-7z" fill="#06B6D4"/>
+    <rect x="110" y="50" width="260" height="16" rx="8" fill="#5a5a5a"/>
+    <rect x="110" y="80" width="200" height="16" rx="8" fill="#3a3a3a"/>
+    <rect x="110" y="110" width="230" height="16" rx="8" fill="#2a2a2a"/>
+  </g>
+  <text x="800" y="920" fill="#8e8e8e" font-size="22" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace">planejamento de viagens com IA · LLMs</text>
+</svg>

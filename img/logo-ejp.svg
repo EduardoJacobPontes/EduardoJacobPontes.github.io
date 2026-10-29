@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 34" width="102" height="34" role="img" aria-label="EJP">
+  <rect x="1" y="1" width="32" height="32" rx="9" fill="#FAFAF8"/>
+  <path d="M17 6.2l2.55 7.35h7.75l-6.27 4.6 2.4 7.45L17 21.05l-6.43 4.55 2.4-7.45-6.27-4.6h7.75z" fill="#0A0A0A"/>
+  <text x="42" y="23.2" font-family="JetBrains Mono, Consolas, 'Courier New', monospace" font-size="17" font-weight="700" letter-spacing="1.5" fill="#F5F5F5">EJP</text>
+</svg>

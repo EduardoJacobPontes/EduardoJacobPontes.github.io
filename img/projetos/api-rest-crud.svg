@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="API REST CRUD de alunos em Java com Spring Boot e MySQL">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <g font-family="JetBrains Mono, Consolas, monospace">
+    <!-- endpoints -->
+    <g font-size="26">
+      <g transform="translate(150 200)">
+        <rect width="150" height="56" rx="10" fill="#49CC90"/><text x="75" y="37" text-anchor="middle" fill="#0a0a0a" font-weight="600">POST</text>
+        <text x="180" y="38" fill="#fff">/alunos</text>
+      </g>
+      <g transform="translate(150 290)">
+        <rect width="150" height="56" rx="10" fill="#61AFFE"/><text x="75" y="37" text-anchor="middle" fill="#0a0a0a" font-weight="600">GET</text>
+        <text x="180" y="38" fill="#fff">/alunos</text>
+      </g>
+      <g transform="translate(150 380)">
+        <rect width="150" height="56" rx="10" fill="#61AFFE"/><text x="75" y="37" text-anchor="middle" fill="#0a0a0a" font-weight="600">GET</text>
+        <text x="180" y="38" fill="#fff">/alunos/<tspan fill="#8e8e8e">{matricula}</tspan></text>
+      </g>
+      <g transform="translate(150 470)">
+        <rect width="150" height="56" rx="10" fill="#FCA130"/><text x="75" y="37" text-anchor="middle" fill="#0a0a0a" font-weight="600">PUT</text>
+        <text x="180" y="38" fill="#fff">/alunos/<tspan fill="#8e8e8e">{matricula}</tspan></text>
+      </g>
+      <g transform="translate(150 560)">
+        <rect width="150" height="56" rx="10" fill="#F93E3E"/><text x="75" y="37" text-anchor="middle" fill="#ffffff" font-weight="600">DELETE</text>
+        <text x="180" y="38" fill="#fff">/alunos/<tspan fill="#8e8e8e">{matricula}</tspan></text>
+      </g>
+    </g>
+    <!-- camadas -->
+    <g font-size="22" text-anchor="middle">
+      <rect x="1020" y="170" width="380" height="96" rx="14" fill="#111" stroke="#fff" stroke-width="2"/>
+      <text x="1210" y="228" fill="#fff">AlunoController</text>
+      <rect x="1020" y="330" width="380" height="96" rx="14" fill="#111" stroke="#8e8e8e" stroke-width="2"/>
+      <text x="1210" y="388" fill="#fff">AlunoDao</text>
+      <rect x="1020" y="490" width="380" height="96" rx="14" fill="#111" stroke="#5a5a5a" stroke-width="2"/>
+      <text x="1210" y="548" fill="#c2c2c2">ConexaoJDBC</text>
+      <path d="M1210 266v56M1210 426v56M1210 586v56" stroke="#5a5a5a" stroke-width="3"/>
+      <path d="M1210 330l-9-14h18zM1210 490l-9-14h18zM1210 650l-9-14h18z" fill="#5a5a5a"/>
+      <!-- banco -->
+      <g transform="translate(1110 660)" fill="#00758F" fill-opacity=".18" stroke="#00A3C4" stroke-width="3">
+        <ellipse cx="100" cy="24" rx="100" ry="24"/>
+        <path d="M0 24v110c0 13 45 24 100 24s100-11 100-24V24"/>
+        <path d="M0 80c0 13 45 24 100 24s100-11 100-24" fill="none" stroke="#00758F"/>
+      </g>
+      <text x="1210" y="860" fill="#00A3C4" font-size="20">MySQL</text>
+    </g>
+    <path d="M830 228H1000" stroke="#3a3a3a" stroke-width="2" stroke-dasharray="8 8"/>
+    <text x="150" y="760" fill="#8e8e8e" font-size="22">Java 17 · Spring Boot · JDBC · OpenAPI</text>
+  </g>
+</svg>

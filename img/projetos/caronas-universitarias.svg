@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Caronas Universitárias: ilustração de app de caronas para a comunidade da faculdade">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+    <g id="pin"><path d="M0 0c-26 0-46 20-46 46 0 34 46 80 46 80s46-46 46-80C46 20 26 0 0 0z" fill="#F59E0B"/><circle cx="0" cy="46" r="15" fill="#0a0a0a"/></g>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <!-- quarteiroes -->
+  <g fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="2">
+    <rect x="120" y="120" width="300" height="200" rx="10"/><rect x="460" y="120" width="420" height="200" rx="10"/>
+    <rect x="120" y="360" width="200" height="260" rx="10"/><rect x="920" y="160" width="300" height="240" rx="10"/>
+    <rect x="1260" y="120" width="220" height="380" rx="10"/><rect x="380" y="680" width="360" height="200" rx="10"/>
+    <rect x="1020" y="620" width="460" height="260" rx="10"/>
+  </g>
+  <!-- rota -->
+  <path d="M360 760C360 560 560 520 760 520S1200 480 1240 300" fill="none" stroke="#3B82F6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M360 760C360 560 560 520 760 520S1200 480 1240 300" fill="none" stroke="#0a0a0a" stroke-width="3" stroke-dasharray="14 18" stroke-linecap="round"/>
+  <use href="#pin" transform="translate(360 640)"/>
+  <!-- campus -->
+  <g transform="translate(1240 168)" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round">
+    <path d="M-70 40L0 0l70 40z" fill="#0a0a0a"/>
+    <path d="M-56 40v70M-20 40v70M20 40v70M56 40v70M-76 112H76"/>
+  </g>
+  <!-- carro -->
+  <g transform="translate(760 520)">
+    <circle r="78" fill="#0a0a0a" stroke="#3B82F6" stroke-width="5"/>
+    <g fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-46 14v-14l12-28c3-7 9-10 16-10h36c7 0 13 3 16 10l12 28v14z"/>
+      <path d="M-46 14v12h92V14"/>
+      <circle cx="-26" cy="30" r="9" fill="#0a0a0a"/><circle cx="26" cy="30" r="9" fill="#0a0a0a"/>
+      <path d="M-32 0h64"/>
+    </g>
+  </g>
+  <!-- assentos -->
+  <g transform="translate(660 650)" font-family="JetBrains Mono, Consolas, monospace">
+    <circle cx="40" cy="30" r="16" fill="#F59E0B"/><circle cx="100" cy="30" r="16" fill="#F59E0B"/>
+    <circle cx="160" cy="30" r="16" fill="none" stroke="#F59E0B" stroke-width="4"/>
+  </g>
+  <text x="800" y="920" fill="#8e8e8e" font-size="22" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace">caronas para a comunidade da faculdade</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Quiz Qual é o seu herói: três telas de perguntas e uma tela de resultado">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+    <g id="phone">
+      <rect width="250" height="500" rx="34" fill="#111" stroke="#5a5a5a" stroke-width="3"/>
+      <rect x="95" y="18" width="60" height="8" rx="4" fill="#3a3a3a"/>
+    </g>
+    <g id="q">
+      <rect x="28" y="70" width="194" height="16" rx="8" fill="#5a5a5a"/>
+      <rect x="28" y="96" width="140" height="16" rx="8" fill="#3a3a3a"/>
+      <circle cx="44" cy="160" r="12" fill="none" stroke="#c2c2c2" stroke-width="3"/><rect x="68" y="152" width="140" height="14" rx="7" fill="#2a2a2a"/>
+      <circle cx="44" cy="210" r="12" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="210" r="5" fill="currentColor"/><rect x="68" y="202" width="120" height="14" rx="7" fill="#3a3a3a"/>
+      <circle cx="44" cy="260" r="12" fill="none" stroke="#c2c2c2" stroke-width="3"/><rect x="68" y="252" width="150" height="14" rx="7" fill="#2a2a2a"/>
+      <rect x="28" y="410" width="194" height="50" rx="12" fill="currentColor"/>
+    </g>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <g font-family="JetBrains Mono, Consolas, monospace">
+    <!-- 3 telas de pergunta -->
+    <g transform="translate(110 220)"><use href="#phone"/><use href="#q" style="color:#F97316"/></g>
+    <g transform="translate(470 220)"><use href="#phone"/><use href="#q" style="color:#DC2626"/></g>
+    <g transform="translate(830 220)"><use href="#phone"/><use href="#q" style="color:#16A34A"/></g>
+    <!-- resultado -->
+    <g transform="translate(1210 190)">
+      <rect width="280" height="560" rx="38" fill="#151515" stroke="#fff" stroke-width="3"/>
+      <rect x="110" y="20" width="60" height="8" rx="4" fill="#3a3a3a"/>
+      <!-- tridente -->
+      <g transform="translate(60 130)" fill="none" stroke="#F97316" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M30 70V0M30 0l-8 12M30 0l8 12M8 30V8M8 8l-6 9M8 8l6 9M52 30V8M52 8l-6 9M52 8l6 9M8 30q22 20 44 0"/>
+      </g>
+      <!-- raio -->
+      <path d="M150 128l-22 42h18l-12 36 34-48h-19l14-30z" fill="#FACC15"/>
+      <!-- flecha -->
+      <g transform="translate(196 132)" fill="none" stroke="#16A34A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 70L50 0M50 0l-16 2M50 0l-2 16M0 70l12-2M0 70l2-12"/>
+      </g>
+      <rect x="40" y="290" width="200" height="18" rx="9" fill="#5a5a5a"/>
+      <rect x="70" y="322" width="140" height="18" rx="9" fill="#3a3a3a"/>
+    </g>
+    <!-- setas de navegacao (Intents) -->
+    <g stroke="#8e8e8e" stroke-width="3" fill="#8e8e8e">
+      <path d="M375 470H455" /><path d="M462 470l-16-9v18z" stroke="none"/>
+      <path d="M735 470H815" /><path d="M822 470l-16-9v18z" stroke="none"/>
+      <path d="M1095 470H1195"/><path d="M1202 470l-16-9v18z" stroke="none"/>
+    </g>
+    <text x="800" y="850" fill="#8e8e8e" font-size="22" text-anchor="middle">uma Activity chama a outra com Intent e putExtra</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Detector de Capacetes: ilustração de visão computacional identificando EPI">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <!-- linhas de varredura -->
+  <g stroke="#fff" stroke-opacity=".05" stroke-width="2">
+    <path d="M0 300H1600M0 500H1600M0 700H1600"/>
+  </g>
+  <!-- capacete -->
+  <g transform="translate(800 520)" fill="none" stroke="#FACC15" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M-230 40c0-150 100-250 230-250s230 100 230 250"/>
+    <path d="M-290 40H290c18 0 26 14 20 30l-8 22H-278l-8-22c-6-16 2-30 20-30z"/>
+    <path d="M-40 -205v-25h80v25"/>
+    <path d="M0 -230V40" stroke-opacity=".55" stroke-width="6"/>
+    <path d="M-120 -170c-40 40-62 110-62 210M120 -170c40 40 62 110 62 210" stroke-opacity=".35" stroke-width="5"/>
+  </g>
+  <!-- caixa delimitadora -->
+  <g fill="none" stroke="#22C55E" stroke-width="5">
+    <path d="M440 230v-60h60M1100 170h60v60M1160 650v60h-60M500 710h-60v-60"/>
+  </g>
+  <rect x="440" y="170" width="720" height="540" fill="#22C55E" fill-opacity=".05" stroke="#22C55E" stroke-opacity=".6" stroke-width="2" stroke-dasharray="10 10"/>
+  <g font-family="JetBrains Mono, Consolas, monospace">
+    <rect x="440" y="118" width="170" height="46" fill="#22C55E"/>
+    <text x="458" y="150" fill="#0a0a0a" font-size="24" font-weight="600">com EPI</text>
+    <text x="800" y="830" fill="#8e8e8e" font-size="22" text-anchor="middle">visão computacional · deep learning · EPI</text>
+  </g>
+</svg>

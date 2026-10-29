@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Teste e Qualidade de Software: classes de equivalência e análise de valor-limite">
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1b1b1b" stroke-width="1"/></pattern>
+    <radialGradient id="v" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <rect width="1600" height="1000" fill="url(#v)"/>
+  <g font-family="JetBrains Mono, Consolas, monospace">
+    <!-- janela de terminal -->
+    <rect x="200" y="130" width="1200" height="300" rx="18" fill="#111" stroke="#3a3a3a" stroke-width="2"/>
+    <path d="M200 186H1400" stroke="#2a2a2a" stroke-width="2"/>
+    <circle cx="236" cy="158" r="8" fill="none" stroke="#777" stroke-width="2"/>
+    <circle cx="264" cy="158" r="8" fill="none" stroke="#777" stroke-width="2"/>
+    <circle cx="292" cy="158" r="8" fill="none" stroke="#777" stroke-width="2"/>
+    <text x="1370" y="164" fill="#777" font-size="18" text-anchor="end">teste.py</text>
+    <text x="240" y="240" fill="#fff" font-size="24">GERADOR DE CASOS DE TESTE</text>
+    <text x="240" y="290" fill="#9a9a9a" font-size="22">1 - Classes de Equivalência  (3 casos)</text>
+    <text x="240" y="330" fill="#9a9a9a" font-size="22">2 - Análise de Valor-Limite  (4 casos)</text>
+    <text x="240" y="370" fill="#9a9a9a" font-size="22">3 - Executar AMBOS</text>
+    <rect x="240" y="388" width="12" height="22" fill="#22C55E"/>
+    <!-- reta numerica -->
+    <path d="M180 690H1420" stroke="#5a5a5a" stroke-width="3"/>
+    <path d="M1420 690l-18-10v20z" fill="#5a5a5a"/>
+    <rect x="560" y="660" width="480" height="60" fill="#22C55E" fill-opacity=".16" stroke="#22C55E" stroke-width="2"/><rect x="180" y="672" width="380" height="36" fill="#EF4444" fill-opacity=".10"/><rect x="1040" y="672" width="380" height="36" fill="#EF4444" fill-opacity=".10"/>
+    <g fill="#fff" font-size="20" text-anchor="middle">
+      <text x="370" y="610" fill="#F87171">classe inválida</text>
+      <text x="800" y="610" fill="#4ADE80">classe válida</text>
+      <text x="1230" y="610" fill="#F87171">classe inválida</text>
+    </g>
+    <!-- pontos de fronteira (AVL) -->
+    <g stroke-width="3">
+      <circle cx="500" cy="690" r="14" fill="#0a0a0a" stroke="#F59E0B"/>
+      <circle cx="560" cy="690" r="14" fill="#F59E0B" stroke="#F59E0B"/>
+      <circle cx="1040" cy="690" r="14" fill="#F59E0B" stroke="#F59E0B"/>
+      <circle cx="1100" cy="690" r="14" fill="#0a0a0a" stroke="#F59E0B"/>
+    </g>
+    <g font-size="20" text-anchor="middle">
+      <text x="500" y="770" fill="#8e8e8e">mínimo − 1</text>
+      <text x="560" y="806" fill="#fff">mínimo</text>
+      <text x="1040" y="806" fill="#fff">máximo</text>
+      <text x="1100" y="770" fill="#8e8e8e">máximo + 1</text>
+    </g>
+    <g font-size="18" fill="#8e8e8e" text-anchor="middle">
+      <text x="800" y="880">rejeitado  ·  aceito  ·  aceito  ·  rejeitado</text>
+    </g>
+  </g>
+</svg>
