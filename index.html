@@ -248,7 +248,9 @@ h2{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.4vw,56px);lett
 .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:26px}
 .chips li{font-family:var(--mono);font-size:12.5px;padding:7px 12px;border-radius:99px;border:1px solid var(--line2);color:var(--ink2);transition:border-color .2s,color .2s}
 .chips li:hover{border-color:var(--ink);color:var(--ink)}
-.tambem{font-family:var(--mono);font-size:13px;color:var(--ink3);margin-top:14px}
+.tambem{font-family:var(--mono);font-size:13px;color:var(--ink2);margin-top:14px}
+.tambem a{display:inline-block;color:var(--ink);padding:3px 10px;margin:4px 2px 0;border:1px solid var(--line2);border-radius:99px;transition:border-color .2s}
+.tambem a:hover{border-color:var(--ink)}
 /* capacidades: 6 cards em 2 x 3 */
 .caps{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 20px;display:flex;flex-direction:column;gap:10px;
@@ -386,10 +388,10 @@ details.det{border-top:1px dashed var(--line2);padding-top:12px}
 .galeria.um .gruda{display:grid;gap:10px}
 .galeria.um .shot:first-child{aspect-ratio:16/10}
 /* no computador a ilustracao fica na propria proporcao (sem faixa preta) e o fluxo em
-   3 passos completa a coluna; o conjunto fica centrado na altura do texto */
+   3 passos completa a coluna; o conjunto fica no topo, alinhado ao inicio do texto */
 .fluxo{display:none}
 @media(min-width:1061px){
-  .galeria.um{align-content:center}
+  .galeria.um{align-content:start;padding-top:36px}
   .fluxo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;list-style:none;margin-top:8px;counter-reset:fx}
   .fluxo li{counter-increment:fx;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 15px;display:flex;flex-direction:column;gap:6px}
   .fluxo li:before{content:"0" counter(fx);font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink3)}
@@ -540,16 +542,16 @@ details.det{border-top:1px dashed var(--line2);padding-top:12px}
   /* no celular os 7 principios viram uma fileira que desliza; a prova vem logo depois do texto */
   .arq{display:flex;align-items:stretch;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:4px 16px 12px;scroll-padding:0 16px;scrollbar-width:none;border-top:0}
   .arq::-webkit-scrollbar{display:none}
-  /* o texto reserva 4 linhas (como o "ex." das capacidades): o fio tracejado da prova
-     fica na mesma altura em todos os cards, e os cards terminam iguais */
+  /* o texto reserva 3 linhas (o maior texto usa 3): o fio tracejado da prova fica na
+     mesma altura em todos os cards, sem linha vazia antes dele; o icone centra no titulo */
   .pr{flex:0 0 84%;scroll-snap-align:start;grid-template-columns:38px 1fr;grid-template-rows:auto auto 1fr;column-gap:12px;padding:18px 18px 18px;
     background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .pr:before{top:0;left:0;right:0;bottom:auto;width:auto;height:2px;transform:scaleX(0);transform-origin:left}
   .pr:hover:before,.pr.ativo:before{transform:scaleX(1)}
-  .pr .ic{grid-row:auto;width:38px;height:38px}
+  .pr .ic{grid-row:auto;width:38px;height:38px;align-self:center}
   .pr h3{grid-row:auto;align-self:center;padding-top:0;min-height:calc(2 * 1.3em);display:flex;align-items:center}
   .pr p,.pr .prova{grid-column:1/-1}
-  .pr p{padding-top:12px;min-height:calc(12px + 4 * 1.55em)}
+  .pr p{padding-top:12px;min-height:calc(12px + 3 * 1.55em)}
   .pr .prova{align-self:start;margin-top:14px}
 }
 
@@ -613,6 +615,9 @@ footer a:hover{color:#fff}
 .lb .lb-dica{display:none;color:#8C8C8C}
 .lb.ampliavel .lb-dica{display:inline}
 .lb.ampliavel img{cursor:zoom-in}
+.lb.toque .lb-dica:before{content:none}
+.lb.toque.ampliavel .lb-dica{display:inline-flex;align-items:center;gap:6px;color:#0A0A0A;background:#F5F5F5;border-radius:8px;padding:4px 10px;line-height:1.3;font-weight:600;cursor:pointer}
+.lb.toque .lb-dica .i{width:13px;height:13px}
 .lb .lb-orig{color:#D4D4D4;border:1px solid #3A3A3A;border-radius:8px;padding:5px 11px;line-height:1.3}
 .lb .lb-orig:hover{color:#000;background:#fff;border-color:#fff}
 .lb-x{z-index:2;background:#0A0A0A;box-shadow:0 6px 18px -6px #000}
@@ -943,9 +948,9 @@ footer a:hover{color:#fff}
         <h3 class="bl-h rv">Construo software com dados e IA.<br><span>E coloco em produção.</span></h3>
         <p class="bio rv">Sou o Eduardo, do Rio de Janeiro, e curso <strong>Engenharia de Software no Ibmec</strong> (jan/2024 – dez/2027, 6º período). Integro o <strong>time de tecnologia da InvestSmart XP</strong>, onde mantenho sistemas em produção, e <strong>fundei o HERA</strong>, produto próprio para profissionais de saúde. Quero crescer em engenharia de software, dados e IA aplicada, em times que tratam tecnologia como produto.</p>
         <ul class="chips rv" aria-label="Tecnologias">
-          <li>Python</li><li>SQL</li><li>TypeScript</li><li>Node.js</li><li>Flask</li><li>FastAPI</li><li>Amazon Redshift</li><li>Power BI</li><li>Cloudflare Workers</li><li>Claude API</li><li>Git</li>
+          <li>Python</li><li>SQL</li><li>TypeScript</li><li>React</li><li>React Native</li><li>Node.js</li><li>Flask</li><li>FastAPI</li><li>PostgreSQL</li><li>Amazon Redshift</li><li>Power BI</li><li>Cloudflare Workers</li><li>Claude API</li><li>C++</li><li>Git</li>
         </ul>
-        <p class="tambem rv">Também conheço: React, React Native, C++, PostgreSQL e Scrum.</p>
+        <p class="tambem rv">React na prática, em repositórios públicos: <a href="https://github.com/EduardoJacobPontes/REACT-BASE-PROJECT" target="_blank" rel="noopener">REACT&#8209;BASE&#8209;PROJECT <svg class="i" aria-hidden="true"><use href="#i-seta-ext"/></svg></a> e <a href="https://github.com/EduardoJacobPontes/PROJETO-FRONT-END" target="_blank" rel="noopener">PROJETO&#8209;FRONT&#8209;END <svg class="i" aria-hidden="true"><use href="#i-seta-ext"/></svg></a></p>
       </div>
 
       <!-- 02 / CAPACIDADES -->
@@ -969,7 +974,7 @@ footer a:hover{color:#fff}
         <h3 class="bl-h rv">Sistema rodando.<br><span>Com prova do lado.</span></h3>
         <ul class="dif">
           <li class="rv"><span class="ok"><svg class="i"><use href="#i-ok"/></svg></span><div><b>Coloco em produção e mantenho.</b><span class="prova">o Smart Ranking é usado todo dia pela mesa de alocação</span></div></li>
-          <li class="rv"><span class="ok"><svg class="i"><use href="#i-ok"/></svg></span><div><b>Meço antes e depois.</b><span class="prova">pico de memória de 192 MB para 66 MB, com o pandas carregado só quando é usado</span></div></li>
+          <li class="rv"><span class="ok"><svg class="i"><use href="#i-ok"/></svg></span><div><b>Meço antes e depois.</b><span class="prova">pico de memória de 192&nbsp;MB para 66&nbsp;MB, com o pandas carregado só quando é usado</span></div></li>
           <li class="rv"><span class="ok"><svg class="i"><use href="#i-ok"/></svg></span><div><b>Penso como dono.</b><span class="prova">fundei o HERA e, como CEO, decidi posicionamento, preço e arquitetura</span></div></li>
           <li class="rv"><span class="ok"><svg class="i"><use href="#i-ok"/></svg></span><div><b>Decisão escrita, não de memória.</b><span class="prova">ADR no HERA, documentação viva e regras explícitas nos sistemas que mantenho</span></div></li>
         </ul>
@@ -983,7 +988,7 @@ footer a:hover{color:#fff}
   <div class="sep" aria-hidden="true"><span><svg class="i"><use href="#i-star"/></svg></span></div>
   <div class="wrap">
     <div class="provas rv">
-      <div class="pv"><div class="v">1<span class="un">produto</span></div><p>próprio, o HERA, em que sou fundador e CEO: captação de pacientes para a saúde.</p><a class="lk" href="#hera">ver HERA <svg class="i"><use href="#i-seta-b"/></svg></a></div>
+      <div class="pv"><div class="v">1<span class="un">produto<span class="so-pc"> próprio</span></span></div><p><span class="so-mob">próprio, </span>o HERA, em que sou fundador e CEO: captação de pacientes para a saúde.</p><a class="lk" href="#hera">ver HERA <svg class="i"><use href="#i-seta-b"/></svg></a></div>
       <div class="pv"><div class="v">6<span class="un">projetos</span></div><p>no time de tecnologia da InvestSmart XP, cada um nascido de uma dor da operação.</p><a class="lk" href="#investsmart">ver projetos <svg class="i"><use href="#i-seta-b"/></svg></a></div>
       <div class="pv"><div class="v">12<span class="un">projetos</span></div><p>acadêmicos em Engenharia de Software no Ibmec, do mobile à visão computacional.</p><a class="lk" href="#academicos">ver acadêmicos <svg class="i"><use href="#i-seta-b"/></svg></a></div>
       <div class="pv"><div class="v">14<span class="un">certificados</span></div><p>e participações, de Java e redes a dados e IA.</p><a class="lk" href="#certificados">ver certificados <svg class="i"><use href="#i-seta-b"/></svg></a></div>
@@ -994,8 +999,8 @@ footer a:hover{color:#fff}
 <!-- LETREIRO (faixa escura e fina): a stack, entre os numeros e os projetos ----------------- -->
 <div class="faixa-let dark" aria-hidden="true">
   <div class="letreiro"><div class="trilho">
-    <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>TypeScript</span><span>Node.js</span><span>Cloudflare Workers</span><span>Power BI</span><span>Microsoft Graph</span><span>Claude API</span><span>pandas</span><span>pytest</span><span>Java</span><span>Spring Boot</span><span>Kotlin</span><span>Git</span>
-    <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>TypeScript</span><span>Node.js</span><span>Cloudflare Workers</span><span>Power BI</span><span>Microsoft Graph</span><span>Claude API</span><span>pandas</span><span>pytest</span><span>Java</span><span>Spring Boot</span><span>Kotlin</span><span>Git</span>
+    <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Node.js</span><span>Cloudflare Workers</span><span>Power BI</span><span>Microsoft Graph</span><span>Claude API</span><span>pandas</span><span>pytest</span><span>PostgreSQL</span><span>Java</span><span>Spring Boot</span><span>Kotlin</span><span>C++</span><span>Git</span>
+    <span>Python</span><span>SQL</span><span>Amazon Redshift</span><span>Flask</span><span>FastAPI</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Node.js</span><span>Cloudflare Workers</span><span>Power BI</span><span>Microsoft Graph</span><span>Claude API</span><span>pandas</span><span>pytest</span><span>PostgreSQL</span><span>Java</span><span>Spring Boot</span><span>Kotlin</span><span>C++</span><span>Git</span>
   </div></div>
 </div>
 
@@ -1035,8 +1040,8 @@ footer a:hover{color:#fff}
           <div><dt>Resultado</dt><dd>
             <p class="uso"><strong>Usado todo dia pela mesa de alocação.</strong></p>
             <div class="res">
-              <div><b>15 ms</b><span>painel da diretoria (antes 10 s)</span></div>
-              <div><b>66 MB</b><span>pico de memória (antes 192 MB)</span></div>
+              <div><b>15 ms</b><span>painel da diretoria (antes 10&nbsp;s)</span></div>
+              <div><b>66 MB</b><span>pico de memória (antes 192&nbsp;MB)</span></div>
               <div><b>20 h por mês</b><span>de trabalho manual eliminadas</span></div>
               <div><b>99 testes</b><span>automatizados (pytest)</span></div>
             </div></dd></div>
@@ -1044,7 +1049,7 @@ footer a:hover{color:#fff}
         <ul class="tags"><li>Python</li><li>Flask</li><li>Jinja</li><li>Amazon Redshift</li><li>Power BI REST (DAX)</li><li>Bitrix24</li><li>Fernet</li><li>Render</li><li>pytest</li></ul>
         <details class="det"><summary>detalhes técnicos <svg class="i"><use href="#i-mais"/></svg></summary>
           <ul>
-            <li>Cofre com Fernet (AES-128 com HMAC) e compressão zlib antes de cifrar: caiu de 10,4 MB para 1,4 MB.</li>
+            <li>Cofre com Fernet (AES-128 com HMAC) e compressão zlib antes de cifrar: caiu de 10,4&nbsp;MB para 1,4&nbsp;MB.</li>
             <li>pandas carregado só quando é usado.</li>
             <li>Régua de risco de saída de assessores: pontuação por regras a partir do DW, com alertas no Centro do Investor.</li>
             <li>Estudos publicados como imagem.</li>
@@ -1056,7 +1061,7 @@ footer a:hover{color:#fff}
         <a class="shot" href="img/smart-ranking-diretoria.jpg" data-tam="1000,1400,1800,2200,2784" data-lb="smart" data-fict="1" data-cap="Smart Ranking · painel da Diretoria com o Ranking Total"><img src="img/smart-ranking-diretoria-1400.jpg" srcset="img/smart-ranking-diretoria-1000.jpg 1000w, img/smart-ranking-diretoria-1400.jpg 1400w, img/smart-ranking-diretoria-1800.jpg 1800w, img/smart-ranking-diretoria-2200.jpg 2200w" sizes="(max-width:1060px) calc(100vw - 32px), 720px" alt="Painel da Diretoria no Smart Ranking com o Ranking Total dos Investors (dados fictícios)" width="1392" height="710" loading="lazy"><span class="zoom"><svg class="i"><use href="#i-lupa"/></svg></span></a>
         <a class="shot" href="img/smart-ranking-investors.jpg" data-tam="1000,1400,1800,2200,2880" data-lb="smart" data-fict="1" data-cap="Smart Ranking · ranking de Investors e Middles"><img src="img/smart-ranking-investors-1400.jpg" srcset="img/smart-ranking-investors-1000.jpg 1000w, img/smart-ranking-investors-1400.jpg 1400w, img/smart-ranking-investors-1800.jpg 1800w, img/smart-ranking-investors-2200.jpg 2200w" sizes="(max-width:1060px) calc(100vw - 32px), 720px" alt="Ranking de Investors e Middles no Smart Ranking (dados fictícios)" width="1440" height="884" loading="lazy"><span class="zoom"><svg class="i"><use href="#i-lupa"/></svg></span></a>
         <a class="shot" href="img/smart-ranking-velocimetro.jpg" data-tam="1000,1400,1800,2200,2880" data-lb="smart" data-fict="1" data-cap="Smart Ranking · velocímetro de receita"><img src="img/smart-ranking-velocimetro-1400.jpg" srcset="img/smart-ranking-velocimetro-1000.jpg 1000w, img/smart-ranking-velocimetro-1400.jpg 1400w, img/smart-ranking-velocimetro-1800.jpg 1800w, img/smart-ranking-velocimetro-2200.jpg 2200w" sizes="(max-width:1060px) calc(100vw - 32px), 720px" alt="Velocímetro de receita do Smart Ranking com os medidores por linha de negócio (dados fictícios)" width="1440" height="772" loading="lazy"><span class="zoom"><svg class="i"><use href="#i-lupa"/></svg></span></a>
-        <p class="cap">telas com dados fictícios · clique para ampliar</p>
+        <p class="cap">telas com dados fictícios · clique para&nbsp;ampliar</p>
       </div>
     </article>
 
@@ -1064,7 +1069,7 @@ footer a:hover{color:#fff}
     <article class="card destaque inv rv" id="robo">
       <div class="galeria um"><div class="gruda">
         <a class="shot" href="img/projetos/robo-n3-whatsapp.svg" data-lb="robo" data-fict="1" data-cap="Robô de IA no WhatsApp · ilustração da conversa e da apresentação gerada"><img src="img/projetos/robo-n3-whatsapp.svg" alt="Ilustração: no WhatsApp o gestor cria a reunião, informa o time e recebe um PowerPoint com os números do time e um slide de foco por integrante (dados fictícios)" width="1600" height="1000" loading="lazy"><span class="zoom"><svg class="i"><use href="#i-lupa"/></svg></span></a>
-        <p class="cap">ilustração · dados fictícios · clique para ampliar</p>
+        <p class="cap">ilustração · dados fictícios · clique para&nbsp;ampliar</p>
         <ol class="fluxo" aria-label="Como funciona, em 3 passos">
           <li><b>WhatsApp</b><span>O gestor manda o nome dele e o dos integrantes.</span></li>
           <li><b>Data Warehouse</b><span>Os nomes são conferidos no cadastro e os números, calculados por código.</span></li>
@@ -1099,7 +1104,7 @@ footer a:hover{color:#fff}
         <div class="corpo">
           <span class="status vivo" style="align-self:flex-start"><i></i>em produção · InvestSmart XP</span>
           <h3>Motor de comunicação automatizada<span>Cada pessoa recebe o próprio recorte, sem ninguém apertar botão.</span></h3>
-          <p class="destq"><strong>mais de 64 mil e-mails</strong> enviados com log · <strong>mais de 900 assessores</strong> por rodada · <strong>107 líderes</strong> de 3 diretorias toda semana</p>
+          <p class="destq"><strong>mais de 64&nbsp;mil e&#8209;mails</strong> enviados com log · <strong>mais de 900 assessores</strong> por rodada · <strong>107 líderes</strong> de 3 diretorias toda semana</p>
           <ul class="tags"><li>Python</li><li>Microsoft Graph API</li><li>OAuth2</li><li>Amazon Redshift</li></ul>
           <details class="det"><summary>como funciona <svg class="i"><use href="#i-mais"/></svg></summary>
             <dl class="pfr">
@@ -1212,7 +1217,7 @@ footer a:hover{color:#fff}
               <li>Python ficou de fora do HERA porque exigiria um segundo servidor e quebraria o custo fixo zero.</li>
               <li>Recorte da foto do cliente 100% local com U²-Net, sem a foto sair da máquina; posts renderizados com Edge headless.</li>
               <li>A trava ética foi testada contra falso positivo e falso negativo.</li>
-              <li>A API só aceita JSON, com limite de 16 KB por requisição.</li>
+              <li>A API só aceita JSON, com limite de 16&nbsp;KB por requisição.</li>
             </ul>
           </details>
         </div>
@@ -1299,7 +1304,7 @@ footer a:hover{color:#fff}
       <article class="card mini rv fechado" data-grupo="acad">
         <a class="shot" href="img/projetos/portal-ibmec.jpg" data-lb="acad" data-cap="Portal de Portfólios Ibmec · página inicial"><img src="img/projetos/portal-ibmec.jpg" alt="Página inicial do Portal de Portfólios Ibmec com filtros e cards de projetos" width="1600" height="1000" loading="lazy"><span class="zoom"><svg class="i"><use href="#i-lupa"/></svg></span></a>
         <div class="corpo"><span class="quando">fev/2025</span><h3>Portal de Portfólios Ibmec</h3>
-          <p>Requisitos e casos de uso documentados antes do código; catálogo com filtros e busca. Em equipe.</p>
+          <p>Requisitos e casos de uso documentados antes do código; catálogo em React com filtros e busca. Em equipe.</p>
           <div class="rodape-card"><a class="lk" href="https://github.com/EduardoJacobPontes/PROJETO-FRONT-END" target="_blank" rel="noopener">github <svg class="i"><use href="#i-seta-ext"/></svg></a></div></div>
       </article>
       <article class="card mini rv fechado" data-grupo="acad">
@@ -1332,8 +1337,8 @@ footer a:hover{color:#fff}
     <div class="arq-cab" aria-hidden="true"><span></span><span>princípio</span><span>como</span><span>prova</span></div>
     <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-raio"/></svg></span><h3>Cache pré&#8209;calculado</h3><p>Os números são calculados antes, na máquina local; a nuvem só entrega o resultado pronto.</p><span class="prova"><b>Smart Ranking</b> · painel da diretoria de 10&nbsp;s para 15&nbsp;ms; o servidor nem acessa o banco</span></div>
     <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-cadeado"/></svg></span><h3>Criptografia</h3><p>Dado sigiloso só vai para a nuvem cifrado, e nenhuma credencial de banco ou de BI fica no servidor.</p><span class="prova"><b>Smart Ranking</b> · cofre Fernet (AES-128 com HMAC), comprimido antes de cifrar</span></div>
-    <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-camadas"/></svg></span><h3>Processamento em lote</h3><p>Um e&#8209;mail por destinatário, com prévia, log, retentativa e agendamento.</p><span class="prova"><b>Motor de comunicação</b> · mais de 64 mil e&#8209;mails, com modo de teste</span></div>
-    <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-ramo"/></svg></span><h3>Deploy contínuo (CD)</h3><p>Cada push publica sozinho, sem passo manual; 99 testes automatizados com pytest conferem o que já funcionava.</p><span class="prova"><b>Smart Ranking</b> · publicado no Render · testes com pytest</span></div>
+    <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-camadas"/></svg></span><h3>Processamento em lote</h3><p>Um e&#8209;mail por destinatário, com prévia, log, retentativa e agendamento.</p><span class="prova"><b>Motor de comunicação</b> · mais de 64&nbsp;mil e&#8209;mails, com modo de teste</span></div>
+    <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-ramo"/></svg></span><h3>Deploy contínuo (CD)</h3><p>Cada push publica sozinho, sem passo manual; 99&nbsp;testes automatizados com pytest conferem o que já funcionava.</p><span class="prova"><b>Smart Ranking</b> · publicado no Render · testes com pytest</span></div>
     <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-banco"/></svg></span><h3>Fonte única de dados</h3><p>Todo número sai do banco, calculado por código; a IA só redige o texto em volta.</p><span class="prova"><b>Robô no WhatsApp</b> · indicadores do Data Warehouse; a Claude API só entra fora do roteiro</span></div>
     <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-escudo"/></svg></span><h3>Segurança web</h3><p>CSP restritiva, SQL sempre parametrizado, honeypot contra robô e LGPD no esquema.</p><span class="prova"><b>HERA</b> · consentimento obrigatório, IP não guardado, API só com JSON de até 16&nbsp;KB</span></div>
     <div class="pr rv" role="listitem"><span class="ic"><svg class="i"><use href="#i-alvo"/></svg></span><h3>Ética por regras</h3><p>Bloqueio por regra explícita, sem IA decidindo: cada bloqueio aponta a regra e a norma.</p><span class="prova"><b>HERA</b> · 18 regras ligadas a 7 conselhos de saúde; texto vindo de LLM é escapado e validado</span></div>
@@ -1709,6 +1714,27 @@ footer a:hover{color:#fff}
       lbOrig = document.getElementById("lb-orig");
   var grupo = [], pos = 0, origem = null;
   lbDica.textContent = temMouse ? "clique na imagem para ver em tamanho real" : "toque para ampliar";
+  // a dica das abas tambem fala em "toque" quando nao ha mouse
+  var dicaAbas = document.querySelector(".dica-abas");
+  if (dicaAbas && !temMouse) dicaAbas.lastChild.textContent = "Toque nas abas para ver também o HERA e os Acadêmicos.";
+  // no toque a dica vira botao com lupa, e as legendas da galeria falam em "toque"
+  if (!temMouse) {
+    lb.classList.add("toque");
+    lbDica.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-lupa"/></svg>ampliar';
+    lbDica.setAttribute("role", "button");
+    lbDica.setAttribute("tabindex", "0");
+    lbDica.addEventListener("click", function(){
+      if (lb.classList.contains("zoom")) zoom(false);
+      else if (lb.classList.contains("ampliavel")) zoom(true);
+    });
+    // Enter e Espaco acionam o botao, como num <button>
+    lbDica.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); lbDica.click(); }
+    });
+    document.querySelectorAll(".galeria .cap").forEach(function(c){
+      c.textContent = c.textContent.replace(/clique para\s+ampliar/, "toque para ampliar");
+    });
+  }
   function ehSvg(){ return /\.svg$/i.test(grupo[pos].getAttribute("href")); }
   // teto = pixels reais da imagem divididos pela densidade da tela: numa tela
   // com zoom de 125% ou 150% a imagem nao e esticada (e o que a deixava borrada)
@@ -1744,6 +1770,7 @@ footer a:hover{color:#fff}
   function zoom(on, ev){
     var r = lbImg.getBoundingClientRect();
     lb.classList.toggle("zoom", on);
+    if (!temMouse) lbDica.lastChild.textContent = on ? "reduzir" : "ampliar";
     lbImg.onload = null;
     if (!on) { lbImg.src = arquivo(caixa()); teto(); return; }
     var fx = ev ? (ev.clientX - r.left) / r.width : .5, fy = ev ? (ev.clientY - r.top) / r.height : .5;
