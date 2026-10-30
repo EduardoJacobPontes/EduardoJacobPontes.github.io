@@ -127,15 +127,12 @@
   .date { font-size: 9pt; color: var(--teal); }
 
   a.lk { color: var(--teal); font-weight: 700; text-decoration: underline; text-decoration-thickness: 0.5pt; text-underline-offset: 1.5pt; }
-  a.url { font-weight: 400; white-space: nowrap; }
   .certs {
     display: grid;
     grid-template-columns: 264.5pt 1fr;
     font-size: 9pt;
     line-height: 12.4pt;
   }
-  .certs { grid-template-columns: 252.8pt 1fr; padding-left: 0; column-gap: 11.7pt; list-style: none; }
-  .certs li::before { content: "• "; color: var(--ink); }
   .certs li { margin-bottom: 0; }
   .certs .em { white-space: nowrap; }
 
@@ -145,7 +142,7 @@
     .contact a, .contact span, .portfolio a { overflow-wrap: anywhere; }
     .portfolio { height: auto; min-height: 20pt; padding: 4pt 8pt; flex-wrap: wrap; }
     .role { flex-direction: column; gap: 0; }
-    .desc a.lk, a.url { overflow-wrap: anywhere; white-space: normal; }
+    .desc a.lk { overflow-wrap: anywhere; }
     .certs { grid-template-columns: 1fr; }
     .certs .em { white-space: normal; }
   }
@@ -167,7 +164,7 @@
 
   <section>
     <h2>RESUMO PROFISSIONAL</h2>
-    <p>Estudante de Engenharia de Software no Ibmec (6º período, conclusão em 12/2027), no time de tecnologia da InvestSmart XP e fundador do HERA. Desenvolvo back-end, APIs REST, automações e dados em Python, SQL e TypeScript, com testes, segurança e IA aplicada (LLMs, agentes de IA); minhas automações já enviaram mais de 64&nbsp;mil e-mails. Busco estágio em engenharia de software.</p>
+    <p>Estudante de Engenharia de Software no Ibmec (6º período, conclusão em 12/2027), no time de tecnologia da InvestSmart XP e fundador do HERA. Desenvolvo back-end, APIs REST, automações e dados em Python, SQL e TypeScript, com testes, segurança e IA aplicada (LLMs, agentes de IA); minhas automações já enviaram mais de 64 mil e-mails. Busco estágio em engenharia de software.</p>
   </section>
 
   <section>
@@ -184,11 +181,11 @@
       <ul>
         <li>Criei e mantenho o <b>Smart Ranking</b> (Python, Flask, Redshift, Bitrix24), BI diário da mesa de alocação: trocou cerca de 10 rankings semanais em print por painel ao vivo, abriu o <b>histórico de campanhas, antes indisponível</b>, e poupou <b>cerca de 20 h por mês</b>.</li>
         <li>Reduzi o tempo de resposta do painel de <b>10 s para 15 ms</b> e o pico de memória de <b>192 MB para 66 MB</b>, com cache pré-calculado.</li>
-        <li>Garanti <b>99 testes automatizados</b> (pytest), deploy automático no Render a cada push e dados sigilosos cifrados com <b>Fernet</b>.</li>
+        <li>Protegi os dados sigilosos do painel com criptografia <b>Fernet</b> (AES-128 com HMAC).</li>
+        <li>Garanti a qualidade com <b>99 testes automatizados</b> (pytest) e deploy automático no Render a cada push.</li>
         <li>Criei um <b>robô de IA no WhatsApp</b> (Python, Flask, Claude API) que entrega a reunião de cada equipe pronta em PowerPoint: indicadores calculados no Data Warehouse e 1 slide de foco por integrante (protótipo em testes).</li>
         <li>Automatizei e-mails personalizados via <b>Microsoft Graph API</b> (Python, pandas), com modo de teste, retentativa e log: relatórios para <b>mais de 900 assessores</b> por rodada e <b>mais de 64 mil e-mails</b> enviados desde 04/2026.</li>
-        <li>Automatizei estudos da diretoria no Amazon Redshift (SQL, ETL, python-pptx): ROA, custódia, PL, captação, churn e retenção.</li>
-        <li>Criei dashboards em <b>Power BI</b> e padronizei a documentação das cargas do Data&nbsp;Warehouse.</li>
+        <li>Automatizei estudos para a diretoria no Amazon Redshift (SQL, ETL, python-pptx), como ROA, evolução de PL, custódia, captação, risco de churn e funil de retenção; criei dashboards em Power BI e padronizei a documentação das cargas do Data&nbsp;Warehouse.</li>
       </ul>
     </div>
     <div class="job">
@@ -206,10 +203,10 @@
   <section>
     <h2>PROJETOS ACADÊMICOS</h2>
     <ul>
-      <li><b>API de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: Spring Boot, DTO, validação por Strategy e Swagger. <a class="lk url" href="https://github.com/EduardoJacobPontes/ap2-prog">github.com/EduardoJacobPontes/ap2-prog</a></li>
-      <li><b>App Android de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: API em FastAPI e app Kotlin. <a class="lk url" href="https://github.com/EduardoJacobPontes/ap2-dev-mobile-biblioteca">github.com/EduardoJacobPontes/ap2-dev-mobile-biblioteca</a></li>
-      <li><b>API REST de Alunos</b> <span class="date">(1º sem. 2026)</span>: CRUD em Spring Boot, OpenAPI e MySQL. <a class="lk url" href="https://github.com/EduardoJacobPontes/api-rest-crud">github.com/EduardoJacobPontes/api-rest-crud</a></li>
-      <li><b>Gestão de Elenco</b> <span class="date">(2024-2025)</span>: SPA em JavaScript, API REST e SHA-256. Site no ar: <a class="lk url" href="https://eduardojacobpontes.github.io/PROJETO-DEV-WEB/">eduardojacobpontes.github.io/PROJETO-DEV-WEB</a></li>
+      <li><b>API de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: Spring Boot em camadas, com DTO, Mapper, validação por Strategy e Swagger. <a class="lk" href="https://github.com/EduardoJacobPontes/ap2-prog">GitHub</a></li>
+      <li><b>App Android de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: API REST em FastAPI e Swagger, consumida por app Android em Kotlin. <a class="lk" href="https://github.com/EduardoJacobPontes/ap2-dev-mobile-biblioteca">GitHub</a></li>
+      <li><b>API REST de Alunos</b> <span class="date">(1º sem. 2026)</span>: CRUD em Java 17 e Spring Boot com OpenAPI e MySQL, em camadas. <a class="lk" href="https://github.com/EduardoJacobPontes/api-rest-crud">GitHub</a></li>
+      <li><b>Gestão de Elenco</b> <span class="date">(2024-2025)</span>: SPA em JavaScript com API REST e senha por hash SHA-256. <a class="lk" href="https://eduardojacobpontes.github.io/PROJETO-DEV-WEB/">Site no ar</a> · <a class="lk" href="https://github.com/EduardoJacobPontes/PROJETO-DEV-WEB">GitHub</a></li>
       <li><b>Detector de Capacetes</b> <span class="date">(2º sem. 2025)</span>: visão computacional e deep learning em Python para detectar o uso de EPI em imagens.</li>
       <li><b>Travel Planner AI</b> <span class="date">(2º sem. 2025)</span>: planejador de viagens com LLMs; pitch apresentado a investidores no Ibmec.</li>
     </ul>
@@ -219,7 +216,7 @@
     <h2>HABILIDADES TÉCNICAS</h2>
     <ul>
       <li><b>Linguagens:</b> Python, SQL, TypeScript, JavaScript, Java, Kotlin, C++, HTML, CSS</li>
-      <li><b>Front-end &amp; Mobile:</b> React (<a class="lk url" href="https://github.com/EduardoJacobPontes/REACT-BASE-PROJECT">github.com/EduardoJacobPontes/REACT-BASE-PROJECT</a>), React Native, Android (Kotlin)</li>
+      <li><b>Front-end &amp; Mobile:</b> React (<a class="lk" href="https://github.com/EduardoJacobPontes/REACT-BASE-PROJECT">GitHub</a>), React Native, Android (Kotlin)</li>
       <li><b>Dados &amp; BI:</b> AWS (Amazon Redshift), PostgreSQL, MySQL, SQLite, Cloudflare D1, pandas, ETL, Data Warehouse, Power BI (DAX)</li>
       <li><b>Back-end &amp; Cloud:</b> Flask, FastAPI, Spring Boot, Node.js, Cloudflare Workers, APIs REST (OpenAPI, Swagger), Microsoft Graph API</li>
       <li><b>Inteligência Artificial:</b> IA generativa, LLMs (Claude API), agentes de IA, machine learning, deep learning, visão computacional</li>
@@ -234,15 +231,17 @@
 
   <section>
     <h2>CERTIFICAÇÕES</h2>
-    <div>
-      <ul class="certs">
+    <div class="certs">
+      <ul>
+        <li><b>Java Foundations</b> <span class="em">|&nbsp;Oracle&nbsp;·&nbsp;06/2025</span></li>
         <li><b>Análise de Dados com Power BI</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;11/2025</span></li>
+        <li><b>Modelagem de Dados</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;04/2025</span></li>
+        <li><b>Global AI Bootcamp 2024</b> <span class="em">|&nbsp;Global AI Community&nbsp;·&nbsp;04/2024</span></li>
+      </ul>
+      <ul>
         <li><b>Networking Devices and Initial Configuration</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;11/2025</span></li>
         <li><b>Networking Basics</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;10/2025</span></li>
-        <li><b>Java Foundations</b> <span class="em">|&nbsp;Oracle&nbsp;·&nbsp;06/2025</span></li>
-        <li><b>Modelagem de Dados</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;04/2025</span></li>
         <li><b>Desenvolvimento Web, Front-End e Back-End</b> <span class="em">|&nbsp;Ibmec&nbsp;·&nbsp;2024-2025</span></li>
-        <li><b>Global AI Bootcamp 2024</b> <span class="em">|&nbsp;Global AI Community&nbsp;·&nbsp;04/2024</span></li>
         <li><b>Inglês Avançado</b> <span class="em">|&nbsp;CCAA&nbsp;·&nbsp;08/2022</span></li>
       </ul>
     </div>
