@@ -126,6 +126,7 @@
   .job + .job { margin-top: 7pt; }
   .date { font-size: 9pt; color: var(--teal); }
 
+  a.lk { color: var(--teal); font-weight: 700; text-decoration: underline; text-decoration-thickness: 0.5pt; text-underline-offset: 1.5pt; }
   .certs {
     display: grid;
     grid-template-columns: 264.5pt 1fr;
@@ -141,6 +142,7 @@
     .contact a, .contact span, .portfolio a { overflow-wrap: anywhere; }
     .portfolio { height: auto; min-height: 20pt; padding: 4pt 8pt; flex-wrap: wrap; }
     .role { flex-direction: column; gap: 0; }
+    .desc a.lk { overflow-wrap: anywhere; }
     .certs { grid-template-columns: 1fr; }
     .certs .em { white-space: normal; }
   }
@@ -155,50 +157,45 @@
 
   <header>
     <h1>Eduardo Jacob Pontes</h1>
-    <div class="headline">Engenharia de Software | Back-end, Dados &amp; IA aplicada | Python · SQL · TypeScript</div>
+    <div class="headline">Estágio em Engenharia de Software | Back-end, Dados e IA aplicada | Python · SQL · TypeScript</div>
     <div class="contact">Rio de Janeiro, RJ · <a href="https://wa.me/5521990200770">+55 (21) 99020-0770</a> · <a href="mailto:dudujpontes@gmail.com">dudujpontes@gmail.com</a> · <a href="https://www.linkedin.com/in/eduardo-jacob-pontes-574b0b2b5">linkedin.com/in/eduardo-jacob-pontes-574b0b2b5</a></div>
     <div class="portfolio"><span>Portfólio de projetos:&nbsp;<a href="https://eduardojacobpontes.github.io/">eduardojacobpontes.github.io</a>&nbsp;&nbsp;·&nbsp;&nbsp;GitHub:&nbsp;<a href="https://github.com/EduardoJacobPontes">github.com/EduardoJacobPontes</a></span></div>
   </header>
 
   <section>
     <h2>RESUMO PROFISSIONAL</h2>
-    <p>Estudante de Engenharia de Software no Ibmec (6º período, conclusão em 12/2027), no time de tecnologia da InvestSmart XP e fundador do HERA. Desenvolvo sistemas web, automações com APIs e pipelines de dados em Python, SQL e TypeScript, com testes e segurança (criptografia, LGPD). Busco estágio em engenharia de software (back-end, dados e Inteligência&nbsp;Artificial aplicada).</p>
+    <p>Estudante de Engenharia de Software no Ibmec (6º período, conclusão em 12/2027), no time de tecnologia da InvestSmart XP e fundador do HERA. Desenvolvo back-end, APIs REST, automações e dados em Python, SQL e TypeScript, com testes, segurança e IA aplicada (LLMs, agentes de IA); minhas automações já enviaram mais de 64 mil e-mails. Busco estágio em engenharia de software.</p>
   </section>
 
   <section>
     <h2>FORMAÇÃO ACADÊMICA</h2>
-    <div class="role"><b>Bacharelado em Engenharia de Software</b><span class="when">01/2024 – 12/2027 (previsão)</span></div>
-    <div class="org">Ibmec</div>
-  </section>
-
-  <section>
-    <h2>IDIOMAS</h2>
-    <p>Português (nativo) · Inglês (avançado)</p>
+    <div class="role"><span><b>Bacharelado em Engenharia de Software</b> · Ibmec</span><span class="when">01/2024 - 12/2027 (previsão)</span></div>
   </section>
 
   <section>
     <h2>EXPERIÊNCIA PROFISSIONAL</h2>
     <div class="job">
-      <div class="role"><b>Estagiário de Tecnologia e Dados</b><span class="when">04/2026 – atual</span></div>
+      <div class="role"><b>Estagiário de Tecnologia e Dados</b><span class="when">04/2026 - atual</span></div>
       <div class="org">InvestSmart XP</div>
-      <div class="desc">Escritório credenciado XP Investimentos, com mais de 32 bilhões de reais sob custódia. Atuo no time de tecnologia.</div>
+      <div class="desc">Escritório credenciado XP (mais de R$&nbsp;32&nbsp;bi sob custódia) · portfólio:&nbsp;<a class="lk" href="https://eduardojacobpontes.github.io/#smart-ranking">eduardojacobpontes.github.io/#smart-ranking</a></div>
       <ul>
-        <li>Criei e mantenho o <b>Smart Ranking</b> (Python, Flask, Redshift), BI de uso diário da mesa de alocação: trocou cerca de 10 rankings semanais em print por painel ao vivo, abriu o <b>histórico de campanhas, antes indisponível</b>, e poupou <b>cerca de 20 h por mês</b>.</li>
+        <li>Criei e mantenho o <b>Smart Ranking</b> (Python, Flask, Redshift, Bitrix24), BI diário da mesa de alocação: trocou cerca de 10 rankings semanais em print por painel ao vivo, abriu o <b>histórico de campanhas, antes indisponível</b>, e poupou <b>cerca de 20 h por mês</b>.</li>
         <li>Reduzi o tempo de resposta do painel de <b>10 s para 15 ms</b> e o pico de memória de <b>192 MB para 66 MB</b>, com cache pré-calculado.</li>
-        <li>Protegi dados sigilosos com criptografia Fernet (AES-128 com HMAC) e mantenho <b>99 testes automatizados</b> (pytest).</li>
+        <li>Protegi os dados sigilosos do painel com criptografia <b>Fernet</b> (AES-128 com HMAC).</li>
+        <li>Garanti a qualidade com <b>99 testes automatizados</b> (pytest) e deploy automático no Render a cada push.</li>
         <li>Criei um <b>robô de IA no WhatsApp</b> (Python, Flask, Claude API) que entrega a reunião de cada equipe pronta em PowerPoint: indicadores calculados no Data Warehouse e 1 slide de foco por integrante (protótipo em testes).</li>
         <li>Automatizei e-mails personalizados via <b>Microsoft Graph API</b> (Python, pandas), com modo de teste, retentativa e log: relatórios para <b>mais de 900 assessores</b> por rodada e <b>mais de 64 mil e-mails</b> enviados desde 04/2026.</li>
         <li>Automatizei estudos para a diretoria no Amazon Redshift (SQL, ETL, python-pptx), como ROA, evolução de PL, custódia, captação, risco de churn e funil de retenção; criei dashboards em Power BI e padronizei a documentação das cargas do Data&nbsp;Warehouse.</li>
       </ul>
     </div>
     <div class="job">
-      <div class="role"><b>Fundador e CEO</b><span class="when">10/2026 – atual</span></div>
+      <div class="role"><b>Fundador e CEO</b><span class="when">10/2026 - atual</span></div>
       <div class="org">HERA (projeto próprio)</div>
-      <div class="desc">Sistema de captação de pacientes para profissionais de saúde, em pré-lançamento.</div>
+      <div class="desc">Sistema de captação de pacientes para profissionais de saúde, em pré-lançamento · <a class="lk" href="https://eduardojacobpontes.github.io/#hera">eduardojacobpontes.github.io/#hera</a></div>
       <ul>
         <li>Concebi e desenvolvi o produto: conteúdo de Instagram com estratégia que leva o paciente ao WhatsApp do profissional.</li>
-        <li>Arquitetura de custo fixo zero em <b>TypeScript</b> (Cloudflare Workers, D1), com SQL parametrizado, CSP e LGPD no esquema.</li>
-        <li><b>Guardrail ético por regras:</b> 18 regras ligadas às normas de 7 conselhos de saúde barram textos irregulares, sem IA decidindo.</li>
+        <li>Arquitetura de custo fixo zero em <b>TypeScript</b> (Cloudflare Workers, D1), registrada em ADR, com SQL parametrizado, CSP e LGPD.</li>
+        <li><b>Guardrail ético em Node.js:</b> 18 regras ligadas às normas de 7 conselhos de saúde barram textos irregulares, sem IA decidindo.</li>
       </ul>
     </div>
   </section>
@@ -206,25 +203,30 @@
   <section>
     <h2>PROJETOS ACADÊMICOS</h2>
     <ul>
-      <li><b>App de Biblioteca</b> <span class="date">· 1º sem/2026</span> — API REST em FastAPI (SQLAlchemy) e Swagger, consumida por app Android em Kotlin.</li>
-      <li><b>API REST de Alunos</b> <span class="date">· 1º sem/2026</span> — CRUD em Java 17 e Spring Boot com OpenAPI e MySQL, em camadas.</li>
-      <li><b>Travel Planner AI</b> <span class="date">· 2º sem/2025</span> — Planejador de viagens com LLMs; pitch apresentado a investidores no Ibmec.</li>
-      <li><b>Detector de Capacetes</b> <span class="date">· 2º sem/2025</span> — Visão computacional e deep learning (Python) para detectar o uso de EPI em imagens.</li>
-      <li><b>Alerta Cidadão</b> <span class="date">· 1º sem/2025</span> — Java (POO, JDBC), em equipe: alertas de risco com confiabilidade pelo voto da comunidade.</li>
-      <li><b>Gestão de Elenco</b> <span class="date">· 2º sem/2024 – 1º sem/2025</span> — SPA em JavaScript com API REST e senha por hash SHA-256, no GitHub Pages.</li>
+      <li><b>API de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: Spring Boot em camadas, com DTO, Mapper, validação por Strategy e Swagger. <a class="lk" href="https://github.com/EduardoJacobPontes/ap2-prog">GitHub</a></li>
+      <li><b>App Android de Biblioteca</b> <span class="date">(1º sem. 2026)</span>: API REST em FastAPI e Swagger, consumida por app Android em Kotlin. <a class="lk" href="https://github.com/EduardoJacobPontes/ap2-dev-mobile-biblioteca">GitHub</a></li>
+      <li><b>API REST de Alunos</b> <span class="date">(1º sem. 2026)</span>: CRUD em Java 17 e Spring Boot com OpenAPI e MySQL, em camadas. <a class="lk" href="https://github.com/EduardoJacobPontes/api-rest-crud">GitHub</a></li>
+      <li><b>Gestão de Elenco</b> <span class="date">(2024-2025)</span>: SPA em JavaScript com API REST e senha por hash SHA-256. <a class="lk" href="https://eduardojacobpontes.github.io/PROJETO-DEV-WEB/">Site no ar</a> · <a class="lk" href="https://github.com/EduardoJacobPontes/PROJETO-DEV-WEB">GitHub</a></li>
+      <li><b>Detector de Capacetes</b> <span class="date">(2º sem. 2025)</span>: visão computacional e deep learning em Python para detectar o uso de EPI em imagens.</li>
+      <li><b>Travel Planner AI</b> <span class="date">(2º sem. 2025)</span>: planejador de viagens com LLMs; pitch apresentado a investidores no Ibmec.</li>
     </ul>
   </section>
 
   <section>
     <h2>HABILIDADES TÉCNICAS</h2>
     <ul>
-      <li><b>Linguagens:</b> Python, SQL, TypeScript, JavaScript, Java, Kotlin, C++</li>
-      <li><b>Dados &amp; BI:</b> AWS (Amazon Redshift), PostgreSQL, MySQL, SQLite, Cloudflare D1, pandas, ETL, Data Warehouse, Power BI (DAX)</li>
-      <li><b>Back-end &amp; Cloud:</b> Flask, FastAPI, Node.js, Spring Boot, Cloudflare Workers, APIs REST (OpenAPI, Swagger), Microsoft Graph API</li>
-      <li><b>Front-end, Mobile &amp; Ferramentas:</b> React, React Native, HTML, CSS, Android (Kotlin), Git/GitHub, GitHub Pages, Render, Bitrix24</li>
+      <li><b>Linguagens:</b> Python, SQL, TypeScript, JavaScript, Java, Kotlin (Android), HTML, CSS</li>
+      <li><b>Dados &amp; BI:</b> AWS (Amazon Redshift), MySQL, SQLite, Cloudflare D1, pandas, ETL, Data Warehouse, Power BI (DAX)</li>
+      <li><b>Back-end &amp; Cloud:</b> Flask, FastAPI, Spring Boot, Node.js, Cloudflare Workers, APIs REST (OpenAPI, Swagger), Microsoft Graph API</li>
       <li><b>Inteligência Artificial:</b> IA generativa, LLMs (Claude API), agentes de IA, machine learning, deep learning, visão computacional</li>
-      <li><b>Práticas:</b> Scrum, Clean Code, SOLID, testes automatizados (pytest), ADR, criptografia (Fernet), LGPD, segurança de aplicações web</li>
+      <li><b>Práticas:</b> Git/GitHub, testes automatizados (pytest), Clean Code, SOLID, ADR, criptografia (Fernet), LGPD, segurança web</li>
+      <li><b>Também conheço:</b> React, React Native, C++, PostgreSQL, Scrum</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>IDIOMAS</h2>
+    <p>Português (nativo) · Inglês (avançado, certificado CCAA em 08/2022)</p>
   </section>
 
   <section>
@@ -232,15 +234,14 @@
     <div class="certs">
       <ul>
         <li><b>Java Foundations</b> <span class="em">|&nbsp;Oracle&nbsp;·&nbsp;06/2025</span></li>
-        <li><b>Networking Devices and Initial Configuration</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;11/2025</span></li>
-        <li><b>Networking Basics</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;10/2025</span></li>
         <li><b>Análise de Dados com Power BI</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;11/2025</span></li>
+        <li><b>Modelagem de Dados</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;04/2025</span></li>
+        <li><b>Global AI Bootcamp 2024</b> <span class="em">|&nbsp;Global AI Community&nbsp;·&nbsp;04/2024</span></li>
       </ul>
       <ul>
-        <li><b>Modelagem de Dados</b> <span class="em">|&nbsp;Fundação Bradesco&nbsp;·&nbsp;04/2025</span></li>
-        <li><b>Desenvolvimento Web, Front-End e Back-End</b> <span class="em">|&nbsp;Ibmec&nbsp;·&nbsp;2024–2025</span></li>
-        <li><b>Global AI Bootcamp 2024</b> <span class="em">|&nbsp;Global AI Community&nbsp;·&nbsp;04/2024</span></li>
-        <li><b>Inglês Avançado</b> <span class="em">|&nbsp;CCAA&nbsp;·&nbsp;08/2022</span></li>
+        <li><b>Networking Devices and Initial Configuration</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;11/2025</span></li>
+        <li><b>Networking Basics</b> <span class="em">|&nbsp;Cisco&nbsp;·&nbsp;10/2025</span></li>
+        <li><b>Desenvolvimento Web, Front-End e Back-End</b> <span class="em">|&nbsp;Ibmec&nbsp;·&nbsp;2024-2025</span></li>
       </ul>
     </div>
   </section>
