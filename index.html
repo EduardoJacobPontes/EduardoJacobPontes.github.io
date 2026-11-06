@@ -143,9 +143,9 @@ nav#nav .wrap{display:flex;align-items:center;justify-content:space-between;heig
 /* ---- poster: capa (listras alvinegras + estrela) vira o fundo cheio do inicio,
    com o nome gigante atras da foto — inspirado no inicio do gl-dias.pages.dev ----- */
 .poster{position:relative;isolation:isolate;overflow:hidden;margin-top:68px;min-height:calc(100svh - 68px);
-  padding:0 24px clamp(28px,5svh,56px);background:#0A0A0A}
+  display:flex;flex-direction:column;justify-content:center;padding:32px 24px clamp(28px,5svh,48px);background:#0A0A0A}
 .poster .capa{position:absolute;inset:0;height:100%;margin:0;z-index:0}
-.poster .capa:after{inset:0;height:auto;background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.6) 20%,rgba(10,10,10,.94) 34%,#0A0A0A 44%,#0A0A0A 100%)}
+.poster .capa:after{inset:0;height:auto;background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.55) 16%,rgba(10,10,10,.9) 27%,#0A0A0A 36%,#0A0A0A 100%)}
 .poster .cetim{animation:cetim 2.4s cubic-bezier(.45,.05,.35,1) .4s both}
 @keyframes cetim{from{transform:translateX(-600px)}to{transform:translateX(1600px)}}
 .poster .est-seg{transition:transform 1.1s var(--ease)}
@@ -154,16 +154,18 @@ nav#nav .wrap{display:flex;align-items:center;justify-content:space-between;heig
 @keyframes est-ent{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
 @keyframes respira{50%{transform:scale(1.03)}}
 
-.poster-name{position:relative;z-index:1;margin:0;padding-top:clamp(28px,6svh,64px);text-align:center;
-  font-family:"EJP Nome",var(--disp);font-weight:800;text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;
-  word-spacing:.1em;color:#fff;font-size:clamp(42px,13vw,116px)}
+.poster-name{position:relative;z-index:1;margin:0;text-align:center;
+  font-family:"EJP Nome",var(--disp);font-weight:800;text-transform:uppercase;line-height:.96;letter-spacing:-.01em;
+  word-spacing:.1em;color:#fff;font-size:clamp(50px,13vw,132px)}
 /* nome estatico: cada parte nunca quebra no meio */
 .nome{display:inline-block;white-space:nowrap}
 .cinza{background:linear-gradient(110deg,#FFFFFF 0%,#D4D4D4 45%,#8F8F8F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.poster-photo{position:relative;z-index:2;display:block;width:min(66vw,56svh,420px);margin:6px auto 0;border-radius:20px;
+/* a foto sobe por cima da base do nome: mesmo efeito do cartaz do gl-dias */
+.poster-photo{position:relative;z-index:2;display:block;width:min(68vw,52svh,400px);margin:-4vw auto 0;border-radius:20px;
   object-fit:cover;box-shadow:0 40px 90px -32px rgba(0,0,0,.7);transition:transform .45s var(--ease)}
 .poster-photo:hover{transform:scale(1.015)}
-.poster-left,.poster-right{position:relative;z-index:3;padding-top:24px}
+.poster-body{position:relative;z-index:3}
+.poster-left,.poster-right{padding-top:22px}
 .selo{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink2);text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .selo .i{width:13px;height:13px;color:#fff}
 .subt{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.02em;color:#fff;max-width:560px;margin-top:10px}
@@ -177,11 +179,12 @@ nav#nav .wrap{display:flex;align-items:center;justify-content:space-between;heig
 .ctas .lk{margin-left:6px}
 .so-mob{display:none}
 @media(min-width:900px){
-  .poster{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr);padding-inline:48px}
-  .poster-name{grid-column:1/-1}
-  .poster-photo{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(34vw,74svh,460px);margin:0}
-  .poster-left{grid-column:1;grid-row:2;align-self:end;max-width:380px;padding-bottom:clamp(28px,5svh,56px)}
-  .poster-right{grid-column:2;grid-row:2;align-self:end;justify-self:end;max-width:420px;text-align:right;padding-bottom:clamp(28px,5svh,56px)}
+  .poster-name{font-size:clamp(70px,9.6vw,150px)}
+  .poster-photo{width:min(30vw,58svh,380px);margin-top:-6.5vw}
+  .poster-body{display:flex;align-items:flex-end;justify-content:center;gap:clamp(24px,4vw,56px)}
+  .poster-photo{order:2}
+  .poster-left{order:1;flex:1;max-width:320px;padding-top:0;align-self:flex-end;padding-bottom:10px}
+  .poster-right{order:3;flex:1;max-width:360px;text-align:right;padding-top:0;align-self:flex-end;padding-bottom:10px}
   .poster-right .ctas{justify-content:flex-end}
 }
 
@@ -880,27 +883,29 @@ footer a:hover{color:#fff}
   <rect width="1600" height="400" fill="url(#cp-luz)"/>
   <rect class="cetim" width="600" height="400" fill="url(#cp-cetim)"/>
   <g class="est-seg" id="est-seg"><g class="est-resp"><g class="est-ent">
-    <circle cx="1100" cy="170" r="170" fill="url(#cp-halo)"/>
-    <polygon fill="#FFFFFF" points="1100,112 1113.28,151.72 1155.16,152.08 1121.49,176.98 1134.09,216.92 1100,192.6 1065.91,216.92 1078.51,176.98 1044.84,152.08 1086.72,151.72"/>
+    <circle cx="1100" cy="75" r="110" fill="url(#cp-halo)"/>
+    <polygon fill="#FFFFFF" points="1100,17 1113.28,56.72 1155.16,57.08 1121.49,81.98 1134.09,121.92 1100,97.6 1065.91,121.92 1078.51,81.98 1044.84,57.08 1086.72,56.72"/>
   </g></g></g>
   </svg>
   </div>
 
   <h1 class="poster-name"><span class="nome">Eduardo</span><br><span class="nome cinza">Jacob Pontes</span></h1>
-  <img class="poster-photo" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes" width="420" height="420">
 
-  <div class="poster-left">
-    <p class="selo"><svg class="i"><use href="#i-star"/></svg><span class="so-pc">Engenharia de Software · Dados · IA aplicada — Rio de Janeiro</span><span class="so-mob">Software · Dados · IA — RJ</span></p>
-    <p class="subt">Transformo processo manual em sistema que roda sozinho.</p>
-  </div>
-  <div class="poster-right">
-    <p class="lead">Construo sistemas de dados, automações e produtos com IA para empresas que precisam decidir com números confiáveis e escalar a operação sem aumentar o time.</p>
-    <div class="ctas">
-      <a class="btn btn-p mag" href="#projetos">Ver projetos <svg class="i"><use href="#i-seta"/></svg></a>
-      <a class="btn btn-g mag" href="https://wa.me/5521990200770?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20sobre..." target="_blank" rel="noopener"><svg class="i i-wa"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
-      <a class="lk" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo (PDF) <svg class="i"><use href="#i-baixar"/></svg></a>
+  <div class="poster-body">
+    <img class="poster-photo" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes" width="380" height="380">
+    <div class="poster-left">
+      <p class="selo"><svg class="i"><use href="#i-star"/></svg><span class="so-pc">Engenharia de Software · Dados · IA aplicada — Rio de Janeiro</span><span class="so-mob">Software · Dados · IA — RJ</span></p>
+      <p class="subt">Transformo processo manual em sistema que roda sozinho.</p>
     </div>
-    <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
+    <div class="poster-right">
+      <p class="lead">Construo sistemas de dados, automações e produtos com IA para empresas que precisam decidir com números confiáveis e escalar a operação sem aumentar o time.</p>
+      <div class="ctas">
+        <a class="btn btn-p mag" href="#projetos">Ver projetos <svg class="i"><use href="#i-seta"/></svg></a>
+        <a class="btn btn-g mag" href="https://wa.me/5521990200770?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20sobre..." target="_blank" rel="noopener"><svg class="i i-wa"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+        <a class="lk" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo (PDF) <svg class="i"><use href="#i-baixar"/></svg></a>
+      </div>
+      <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
+    </div>
   </div>
 </header>
 
