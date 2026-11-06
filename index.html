@@ -140,35 +140,33 @@ nav#nav .wrap{display:flex;align-items:center;justify-content:space-between;heig
 .lk .i{width:15px;height:15px}
 .lk.mudo{color:var(--ink3);border:0;font-size:12.5px}
 
-/* ---- capa: listras alvinegras e a estrela solitaria, em SVG ------------------ */
-.capa{position:relative;height:clamp(180px,19vw,280px);margin-top:68px;overflow:hidden;background:#0A0A0A}
-.capa svg{width:100%;height:100%}
-.capa:after{content:"";position:absolute;inset:auto 0 0 0;height:35%;pointer-events:none;background:linear-gradient(rgba(10,10,10,0),#0A0A0A)}
-.capa .cetim{animation:cetim 2.4s cubic-bezier(.45,.05,.35,1) .4s both}
+/* ---- poster: capa (listras alvinegras + estrela) vira o fundo cheio do inicio,
+   com o nome gigante atras da foto — inspirado no inicio do gl-dias.pages.dev ----- */
+.poster{position:relative;isolation:isolate;overflow:hidden;margin-top:68px;min-height:calc(100svh - 68px);
+  padding:0 24px clamp(28px,5svh,56px);background:#0A0A0A}
+.poster .capa{position:absolute;inset:0;height:100%;margin:0;z-index:0}
+.poster .capa:after{inset:0;height:auto;background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.6) 20%,rgba(10,10,10,.94) 34%,#0A0A0A 44%,#0A0A0A 100%)}
+.poster .cetim{animation:cetim 2.4s cubic-bezier(.45,.05,.35,1) .4s both}
 @keyframes cetim{from{transform:translateX(-600px)}to{transform:translateX(1600px)}}
-.capa .est-seg{transition:transform 1.1s var(--ease)}
-.capa .est-resp{transform-box:fill-box;transform-origin:center;animation:respira 6s ease-in-out 1.3s infinite}
-.capa .est-ent{transform-box:fill-box;transform-origin:center;animation:est-ent .9s var(--ease) .25s both}
+.poster .est-seg{transition:transform 1.1s var(--ease)}
+.poster .est-resp{transform-box:fill-box;transform-origin:center;animation:respira 6s ease-in-out 1.3s infinite}
+.poster .est-ent{transform-box:fill-box;transform-origin:center;animation:est-ent .9s var(--ease) .25s both}
 @keyframes est-ent{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
 @keyframes respira{50%{transform:scale(1.03)}}
 
-/* ---- hero --------------------------------------------------------------- */
-.hero{padding:0 0 88px}
-/* foto ao lado do nome: so ela sobe por cima da capa */
-.hero-id{display:flex;align-items:flex-end;gap:36px}
-.hero-nome{min-width:0;padding-bottom:4px}
-.avatar{flex:none;width:248px;height:248px;border-radius:50%;object-fit:cover;margin-top:-124px;position:relative;z-index:3;
-  border:4px solid var(--branco);box-shadow:0 0 0 1px #262626,0 30px 60px -24px #000;transition:transform .45s var(--ease)}
-.avatar:hover{transform:scale(1.04) rotate(-2deg)}
-.selo{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink2);text-transform:uppercase;display:flex;align-items:center;gap:10px}
-.selo .i{width:13px;height:13px;color:#fff}
-h1{font-family:"EJP Nome",var(--disp);font-weight:800;font-size:clamp(40px,5.3vw,78px);line-height:1.04;letter-spacing:-.02em;word-spacing:.1em;margin:14px 0 0}
+.poster-name{position:relative;z-index:1;margin:0;padding-top:clamp(28px,6svh,64px);text-align:center;
+  font-family:"EJP Nome",var(--disp);font-weight:800;text-transform:uppercase;line-height:1.05;letter-spacing:-.01em;
+  word-spacing:.1em;color:#fff;font-size:clamp(42px,13vw,116px)}
 /* nome estatico: cada parte nunca quebra no meio */
 .nome{display:inline-block;white-space:nowrap}
 .cinza{background:linear-gradient(110deg,#FFFFFF 0%,#D4D4D4 45%,#8F8F8F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:30px}
-.hero-grid>*{min-width:0}
-.subt{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.02em;color:#fff;max-width:560px}
+.poster-photo{position:relative;z-index:2;display:block;width:min(66vw,56svh,420px);margin:6px auto 0;border-radius:20px;
+  object-fit:cover;box-shadow:0 40px 90px -32px rgba(0,0,0,.7);transition:transform .45s var(--ease)}
+.poster-photo:hover{transform:scale(1.015)}
+.poster-left,.poster-right{position:relative;z-index:3;padding-top:24px}
+.selo{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink2);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.selo .i{width:13px;height:13px;color:#fff}
+.subt{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.02em;color:#fff;max-width:560px;margin-top:10px}
 .lead{color:var(--ink2);font-size:17px;max-width:560px;margin:16px 0 26px}
 /* disponibilidade: o recrutador ve no primeiro olhar */
 .dispo{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 14px 8px 12px;border:1px solid #2E2E2E;border-radius:999px;background:#141414;
@@ -178,9 +176,13 @@ h1{font-family:"EJP Nome",var(--disp);font-weight:800;font-size:clamp(40px,5.3vw
 .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .ctas .lk{margin-left:6px}
 .so-mob{display:none}
-@media(max-width:1060px){
-  .avatar{width:200px;height:200px;margin-top:-100px}
-  .hero-id{gap:28px}
+@media(min-width:900px){
+  .poster{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto minmax(0,1fr);padding-inline:48px}
+  .poster-name{grid-column:1/-1}
+  .poster-photo{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(34vw,74svh,460px);margin:0}
+  .poster-left{grid-column:1;grid-row:2;align-self:end;max-width:380px;padding-bottom:clamp(28px,5svh,56px)}
+  .poster-right{grid-column:2;grid-row:2;align-self:end;justify-self:end;max-width:420px;text-align:right;padding-bottom:clamp(28px,5svh,56px)}
+  .poster-right .ctas{justify-content:flex-end}
 }
 
 /* terminal (decorativo) */
@@ -677,15 +679,10 @@ footer a:hover{color:#fff}
   .so-pc{display:none}
   .so-mob{display:inline}
   .status{white-space:normal;max-width:100%;line-height:1.4;border-radius:12px}
-  /* capa no celular: a foto entra na capa a esquerda, a estrela fica a direita */
-  .capa{height:170px}
-  .hero-id{display:block;padding-top:20px}
-  .avatar{position:absolute;top:98px;left:16px;width:136px;height:136px;margin:0;border-width:3px}
-  .hero{padding-bottom:40px}
-  .hero-grid{margin-top:18px}
+  .poster-name{font-size:11vw;line-height:1.1;padding-top:20px}
+  .poster-name .nome{white-space:normal}
   .selo{display:block;font-size:12px;letter-spacing:.1em;line-height:1.7}
   .selo .i{display:inline-block;vertical-align:-1px;margin-right:6px}
-  h1{margin-top:10px}
   .lead{font-size:16px;margin-bottom:22px}
   .ctas{flex-direction:column;align-items:stretch}
   .ctas .btn{width:100%}
@@ -852,77 +849,60 @@ footer a:hover{color:#fff}
   </div>
 </div></nav>
 
-<!-- capa: listras da camisa alvinegra e a estrela solitaria. Sem texto, sem link. -->
-<div class="capa" id="capa">
-<svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="capa-t" xmlns="http://www.w3.org/2000/svg">
-<title id="capa-t">Listras alvinegras e a estrela solitária</title>
-<defs>
-  <linearGradient id="cp-some" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".65" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-  <mask id="cp-masc" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="400"><rect width="1600" height="400" fill="url(#cp-some)"/></mask>
-  <filter id="cp-trama" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9 0.06" numOctaves="2" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.07 0 0 0 0"/></filter>
-  <radialGradient id="cp-luz" cx=".6875" cy=".44" r=".55"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-  <linearGradient id="cp-cetim" x1="0" y1="0" x2="1" y2="1"><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></linearGradient>
-  <radialGradient id="cp-halo"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-</defs>
-<rect width="1600" height="400" fill="#0A0A0A"/>
-<!-- 14 listras de 114,29: as brancas sao as de indice impar, com costura de 1 unidade nas bordas -->
-<g mask="url(#cp-masc)">
-  <g fill="#FFFFFF" fill-opacity=".085">
-    <rect x="114.29" width="114.29" height="400"/><rect x="342.86" width="114.29" height="400"/><rect x="571.43" width="114.29" height="400"/><rect x="800" width="114.29" height="400"/>
-    <rect x="1028.57" width="114.29" height="400"/><rect x="1257.14" width="114.29" height="400"/><rect x="1485.71" width="114.29" height="400"/>
+<header class="poster dark" id="top">
+  <!-- capa: listras da camisa alvinegra e a estrela solitaria, agora de fundo do inicio inteiro -->
+  <div class="capa" id="capa">
+  <svg viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="capa-t" xmlns="http://www.w3.org/2000/svg">
+  <title id="capa-t">Listras alvinegras e a estrela solitária</title>
+  <defs>
+    <linearGradient id="cp-some" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".65" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="cp-masc" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="400"><rect width="1600" height="400" fill="url(#cp-some)"/></mask>
+    <filter id="cp-trama" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9 0.06" numOctaves="2" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.07 0 0 0 0"/></filter>
+    <radialGradient id="cp-luz" cx=".6875" cy=".44" r=".55"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cp-cetim" x1="0" y1="0" x2="1" y2="1"><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="cp-halo"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="400" fill="#0A0A0A"/>
+  <!-- 14 listras de 114,29: as brancas sao as de indice impar, com costura de 1 unidade nas bordas -->
+  <g mask="url(#cp-masc)">
+    <g fill="#FFFFFF" fill-opacity=".085">
+      <rect x="114.29" width="114.29" height="400"/><rect x="342.86" width="114.29" height="400"/><rect x="571.43" width="114.29" height="400"/><rect x="800" width="114.29" height="400"/>
+      <rect x="1028.57" width="114.29" height="400"/><rect x="1257.14" width="114.29" height="400"/><rect x="1485.71" width="114.29" height="400"/>
+    </g>
+    <g fill="#FFFFFF" fill-opacity=".14">
+      <rect x="114.29" width="1" height="400"/><rect x="227.57" width="1" height="400"/><rect x="342.86" width="1" height="400"/><rect x="456.14" width="1" height="400"/>
+      <rect x="571.43" width="1" height="400"/><rect x="684.71" width="1" height="400"/><rect x="800" width="1" height="400"/><rect x="913.29" width="1" height="400"/>
+      <rect x="1028.57" width="1" height="400"/><rect x="1141.86" width="1" height="400"/><rect x="1257.14" width="1" height="400"/><rect x="1370.43" width="1" height="400"/>
+      <rect x="1485.71" width="1" height="400"/><rect x="1599" width="1" height="400"/>
+    </g>
   </g>
-  <g fill="#FFFFFF" fill-opacity=".14">
-    <rect x="114.29" width="1" height="400"/><rect x="227.57" width="1" height="400"/><rect x="342.86" width="1" height="400"/><rect x="456.14" width="1" height="400"/>
-    <rect x="571.43" width="1" height="400"/><rect x="684.71" width="1" height="400"/><rect x="800" width="1" height="400"/><rect x="913.29" width="1" height="400"/>
-    <rect x="1028.57" width="1" height="400"/><rect x="1141.86" width="1" height="400"/><rect x="1257.14" width="1" height="400"/><rect x="1370.43" width="1" height="400"/>
-    <rect x="1485.71" width="1" height="400"/><rect x="1599" width="1" height="400"/>
-  </g>
-</g>
-<rect width="1600" height="400" filter="url(#cp-trama)"/>
-<rect width="1600" height="400" fill="url(#cp-luz)"/>
-<rect class="cetim" width="600" height="400" fill="url(#cp-cetim)"/>
-<g class="est-seg" id="est-seg"><g class="est-resp"><g class="est-ent">
-  <circle cx="1100" cy="170" r="170" fill="url(#cp-halo)"/>
-  <polygon fill="#FFFFFF" points="1100,112 1113.28,151.72 1155.16,152.08 1121.49,176.98 1134.09,216.92 1100,192.6 1065.91,216.92 1078.51,176.98 1044.84,152.08 1086.72,151.72"/>
-</g></g></g>
-</svg>
-</div>
-
-<header class="hero dark" id="top"><div class="wrap">
-  <div class="hero-id">
-    <img class="avatar" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes" width="248" height="248">
-    <div class="hero-nome">
-      <p class="selo"><svg class="i"><use href="#i-star"/></svg><span class="so-pc">Engenharia de Software · Dados · IA aplicada — Rio de Janeiro</span><span class="so-mob">Software · Dados · IA — RJ</span></p>
-      <h1><span class="nome">Eduardo</span> <span class="nome cinza">Jacob Pontes</span></h1>
-    </div>
+  <rect width="1600" height="400" filter="url(#cp-trama)"/>
+  <rect width="1600" height="400" fill="url(#cp-luz)"/>
+  <rect class="cetim" width="600" height="400" fill="url(#cp-cetim)"/>
+  <g class="est-seg" id="est-seg"><g class="est-resp"><g class="est-ent">
+    <circle cx="1100" cy="170" r="170" fill="url(#cp-halo)"/>
+    <polygon fill="#FFFFFF" points="1100,112 1113.28,151.72 1155.16,152.08 1121.49,176.98 1134.09,216.92 1100,192.6 1065.91,216.92 1078.51,176.98 1044.84,152.08 1086.72,151.72"/>
+  </g></g></g>
+  </svg>
   </div>
-  <div class="hero-grid">
-    <div>
-      <p class="subt">Transformo processo manual em sistema que roda sozinho.</p>
-      <p class="lead">Construo sistemas de dados, automações e produtos com IA para empresas que precisam decidir com números confiáveis e escalar a operação sem aumentar o time.</p>
-      <div class="ctas">
-        <a class="btn btn-p mag" href="#projetos">Ver projetos <svg class="i"><use href="#i-seta"/></svg></a>
-        <a class="btn btn-g mag" href="https://wa.me/5521990200770?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20sobre..." target="_blank" rel="noopener"><svg class="i i-wa"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
-        <a class="lk" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo (PDF) <svg class="i"><use href="#i-baixar"/></svg></a>
-      </div>
-      <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
-    </div>
-    <div class="term rv tilt" role="img" aria-label="Resumo em forma de código Python: Software, Dados e IA aplicada; fundou o HERA, onde é CEO; hoje no time de tecnologia da InvestSmart XP; stack Python, SQL, TypeScript, Flask, Redshift e Claude API; entrega ouvindo a dor de quem usa, medindo antes e depois, com sistema em produção">
-      <div class="term-top" aria-hidden="true"><span></span><span></span><span></span><em>eduardo.py</em></div>
-<pre aria-hidden="true"><span class="k">class</span> <span class="f">Eduardo</span>:
-    papel  = <span class="s">"Software · Dados · IA aplicada"</span>
-    fundou = <span class="s">"HERA"</span>                  <span class="c"># CEO</span>
-    hoje   = <span class="s">"time de tecnologia · InvestSmart XP"</span>
-    stack  = [<span class="s">"Python"</span>, <span class="s">"SQL"</span>, <span class="s">"TypeScript"</span>,
-              <span class="s">"Flask"</span>, <span class="s">"Redshift"</span>, <span class="s">"Claude API"</span>]
 
-    <span class="k">def</span> <span class="f">entrega</span>(self):
-        ouvir = <span class="s">"a dor de quem usa"</span>   <span class="c"># primeiro</span>
-        medir = <span class="s">"antes e depois"</span>      <span class="c"># sempre</span>
-        <span class="k">return</span> <span class="s">"sistema em produção"</span></pre>
-    </div>
+  <h1 class="poster-name"><span class="nome">Eduardo</span><br><span class="nome cinza">Jacob Pontes</span></h1>
+  <img class="poster-photo" src="img/eduardo.jpg" alt="Foto de Eduardo Jacob Pontes" width="420" height="420">
+
+  <div class="poster-left">
+    <p class="selo"><svg class="i"><use href="#i-star"/></svg><span class="so-pc">Engenharia de Software · Dados · IA aplicada — Rio de Janeiro</span><span class="so-mob">Software · Dados · IA — RJ</span></p>
+    <p class="subt">Transformo processo manual em sistema que roda sozinho.</p>
   </div>
-</div></header>
+  <div class="poster-right">
+    <p class="lead">Construo sistemas de dados, automações e produtos com IA para empresas que precisam decidir com números confiáveis e escalar a operação sem aumentar o time.</p>
+    <div class="ctas">
+      <a class="btn btn-p mag" href="#projetos">Ver projetos <svg class="i"><use href="#i-seta"/></svg></a>
+      <a class="btn btn-g mag" href="https://wa.me/5521990200770?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20sobre..." target="_blank" rel="noopener"><svg class="i i-wa"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+      <a class="lk" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo (PDF) <svg class="i"><use href="#i-baixar"/></svg></a>
+    </div>
+    <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
+  </div>
+</header>
 
 <main id="conteudo">
 
