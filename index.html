@@ -149,13 +149,13 @@ html{--z:1}
 @media(min-width:3500px){html{zoom:2.15;--z:2.15}}
 @media(min-width:4000px){html{zoom:2.5;--z:2.5}}
 
-/* ---- poster: nome curto gigante com a estrela na mesma linha, foto de perfil em circulo no centro,
-   listras alvinegras no fundo. Tudo em cqw: acompanha a largura do proprio poster -------------------- */
+/* ---- poster: inicio no formato do gl-dias.pages.dev (nome gigante em uma linha, recorte da foto
+   cruzando o nome), com as listras alvinegras e a estrela de fundo. Tudo em cqw: acompanha a largura do proprio poster ---- */
 .poster{--g:clamp(16px,2.6cqw,44px);position:relative;isolation:isolate;overflow:hidden;margin-top:68px;background:#0A0A0A;container-type:inline-size}
 .poster .capa{position:absolute;inset:0;margin:0;z-index:0}
 .poster .capa-fundo{position:absolute;inset:0;width:100%;height:100%;display:block}
 .poster .capa:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,.3) 45%,rgba(10,10,10,.9) 82%,#0A0A0A 100%)}
-.poster:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 34% 50% at 50% 58%,rgba(255,255,255,.1),transparent 70%)}
+.poster:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 34% 55% at 50% 78%,rgba(255,255,255,.1),transparent 70%)}
 .poster .cetim{animation:cetim 2.4s cubic-bezier(.45,.05,.35,1) .4s both}
 @keyframes cetim{from{transform:translateX(-600px)}to{transform:translateX(1600px)}}
 .poster .est-seg{transition:transform 1.1s var(--ease)}
@@ -163,19 +163,19 @@ html{--z:1}
 .poster .est-ent{transform-box:fill-box;transform-origin:center;animation:est-ent .9s var(--ease) .25s both}
 @keyframes est-ent{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
 @keyframes respira{50%{transform:scale(1.03)}}
+/* estrela: fora da faixa do nome, no vazio ao lado da cabeca */
+.estrela{--sw:28cqw;position:absolute;z-index:1;width:var(--sw);height:var(--sw);right:3cqw;top:62cqw;overflow:visible}
 
-/* nome em duas partes: "Eduardo" "Jacob" + estrela (no celular a estrela fica ao lado de Jacob) */
-.poster-name{position:relative;z-index:2;margin:0;padding:20px var(--g) 0;display:flex;flex-direction:column;align-items:center;
-  font-family:"Anton","EJP Nome",var(--disp);font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.005em;color:#fff;
-  font-size:min(calc((100cqw - 2*var(--g)) / 4.3),130px)}
-.n2{display:flex;align-items:center}
-.cinza{background:linear-gradient(110deg,#FFFFFF 0%,#E4E4E4 50%,#BDBDBD 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.estrela{position:relative;z-index:-1;flex:none;display:block;width:1.08em;height:1.04em;margin-left:.2em;overflow:visible}
-/* foto de perfil: circulo colorido com aro branco */
-.poster-photo{position:relative;z-index:3;display:block;width:min(62cqw,300px);aspect-ratio:1;height:auto;margin:22px auto 0;border-radius:50%;object-fit:cover;
-  border:2px solid rgba(255,255,255,.92);box-shadow:0 0 0 9px rgba(255,255,255,.07),0 40px 90px -30px #000}
+.poster-name{position:relative;z-index:2;margin:0;padding:20px var(--g) 0;text-align:center;
+  font-family:"Anton","EJP Nome",var(--disp);font-weight:400;text-transform:uppercase;line-height:1;letter-spacing:.005em;color:#fff;
+  font-size:min(calc((100cqw - 2*var(--g)) / 3.5),112px)}
+.nome{display:block}
+.cinza{background:linear-gradient(110deg,#FFFFFF 0%,#E0E0E0 45%,#A8A8A8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* recorte da foto: sobe por cima da base do nome (a sobreposicao do cartaz) */
+.poster-photo{position:relative;z-index:3;display:block;width:min(80cqw,380px);height:auto;margin:-5cqw auto 0;pointer-events:none;
+  filter:grayscale(1) contrast(1.06) brightness(.92);-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 100%);mask-image:linear-gradient(180deg,#000 66%,transparent 100%)}
 .poster-left,.poster-right{position:relative;z-index:4;padding:0 var(--g)}
-.poster-left{margin-top:26px}
+.poster-left{margin-top:-10cqw}
 .poster-right{margin:22px 0 0;padding-bottom:40px}
 .selo{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink2);text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .selo .i{width:13px;height:13px;color:#fff}
@@ -191,10 +191,11 @@ html{--z:1}
 .so-mob{display:none}
 @media(min-width:900px){
   .poster{--h:calc(100svh / var(--z) - 68px);height:var(--h);min-height:600px;max-height:62cqw}
-  .poster-name{flex-direction:row;justify-content:center;gap:.2em;padding-top:calc(var(--h) * .06);white-space:nowrap;
-    font-size:min(calc((100cqw - 2*var(--g)) / 7.2),calc(34svh / var(--z)))}
-  .n1,.cinza{display:inline-block;transform:scaleY(1.1)}
-  .poster-photo{position:absolute;left:50%;top:calc(var(--h) * .27);transform:translateX(-50%);width:min(26cqw,calc(var(--h) * .56));margin:0}
+  .estrela{--sw:clamp(110px,13cqw,300px);right:8.5cqw;top:calc(44% - var(--sw) / 2)}
+  .poster-name{white-space:nowrap;padding-top:calc(var(--h) * .055);
+    font-size:min(calc((100cqw - 2*var(--g)) / 6.05),calc(27svh / var(--z)))}
+  .nome{display:inline-block}
+  .poster-photo{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:auto;height:78%;margin:0}
   .poster-left,.poster-right{position:absolute;bottom:clamp(26px,6%,64px);padding:0;margin:0}
   .poster-left{left:var(--g);width:min(30cqw,470px)}
   .poster-right{right:var(--g);width:min(31cqw,440px)}
@@ -865,7 +866,7 @@ footer a:hover{color:#fff}
 </div></nav>
 
 <header class="poster dark" id="top">
-  <!-- fundo: listras da camisa alvinegra; a estrela solitaria fica ao lado do nome -->
+  <!-- capa: listras da camisa alvinegra e a estrela solitaria, de fundo do inicio inteiro -->
   <div class="capa" id="capa">
   <svg class="capa-fundo" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="capa-t" xmlns="http://www.w3.org/2000/svg">
   <title id="capa-t">Listras alvinegras e a estrela solitária</title>
@@ -896,17 +897,21 @@ footer a:hover{color:#fff}
   <rect class="cetim" width="600" height="400" fill="url(#cp-cetim)"/>
   
   </svg>
-  </div>
-
-  <h1 class="poster-name"><span class="n1">Eduardo</span> <span class="n2"><span class="cinza">Jacob</span><svg class="estrela" viewBox="1040 12 120 115" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><g class="est-seg" id="est-seg"><g class="est-resp"><g class="est-ent">
+  <svg class="estrela" viewBox="990 -35 220 220" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <g class="est-seg" id="est-seg"><g class="est-resp"><g class="est-ent">
     <circle cx="1100" cy="75" r="110" fill="url(#cp-halo)"/>
     <polygon fill="#FFFFFF" points="1100,17 1113.28,56.72 1155.16,57.08 1121.49,81.98 1134.09,121.92 1100,97.6 1065.91,121.92 1078.51,81.98 1044.84,57.08 1086.72,56.72"/>
-  </g></g></g></svg></span><span class="sr"> Pontes</span></h1>
-  <img class="poster-photo" src="img/eduardo-perfil.webp" alt="Foto de Eduardo Jacob Pontes" width="800" height="800" fetchpriority="high">
+  </g></g></g>
+  </svg>
+  </div>
+
+  <h1 class="poster-name"><span class="nome">Eduardo</span> <span class="nome cinza">Jacob</span><span class="sr"> Pontes</span></h1>
+  <img class="poster-photo" src="img/eduardo-recorte.webp" alt="Foto de Eduardo Jacob Pontes" width="1151" height="1502" fetchpriority="high">
 
   <div class="poster-left">
     <p class="selo"><svg class="i"><use href="#i-star"/></svg><span class="so-pc">Engenharia de Software · Dados · IA aplicada — Rio de Janeiro</span><span class="so-mob">Software · Dados · IA — RJ</span></p>
     <p class="subt">Transformo processo manual em sistema que roda sozinho.</p>
+    <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
   </div>
   <div class="poster-right">
     <p class="lead">Construo sistemas de dados, automações e produtos com IA para empresas que precisam decidir com números confiáveis e escalar a operação sem aumentar o time.</p>
@@ -915,7 +920,6 @@ footer a:hover{color:#fff}
       <a class="btn btn-g mag" href="https://wa.me/5521990200770?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20sobre..." target="_blank" rel="noopener"><svg class="i i-wa"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
       <a class="lk" href="Eduardo_Jacob_Pontes_CV.pdf" target="_blank" rel="noopener">Currículo (PDF) <svg class="i"><use href="#i-baixar"/></svg></a>
     </div>
-    <p class="dispo"><i aria-hidden="true"></i>Aberto a oportunidades em engenharia de software, dados e IA.</p>
   </div>
 </header>
 
